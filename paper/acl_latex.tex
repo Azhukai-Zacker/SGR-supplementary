@@ -1,0 +1,825 @@
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[review]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+\title{SGR: Sparse Guarded Reranking for Long-Form Vision-Language Hallucination Mitigation}
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a separate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\}
+
+%\author{
+%  \textbf{First Author\textsuperscript{1}},
+%  \textbf{Second Author\textsuperscript{1,2}},
+%  \textbf{Third T. Author\textsuperscript{1}},
+%  \textbf{Fourth Author\textsuperscript{1}},
+%\\
+%  \textbf{Fifth Author\textsuperscript{1,2}},
+%  \textbf{Sixth Author\textsuperscript{1}},
+%  \textbf{Seventh Author\textsuperscript{1}},
+%  \textbf{Eighth Author \textsuperscript{1,2,3,4}},
+%\\
+%  \textbf{Ninth Author\textsuperscript{1}},
+%  \textbf{Tenth Author\textsuperscript{1}},
+%  \textbf{Eleventh E. Author\textsuperscript{1,2,3,4,5}},
+%  \textbf{Twelfth Author\textsuperscript{1}},
+%\\
+%  \textbf{Thirteenth Author\textsuperscript{3}},
+%  \textbf{Fourteenth F. Author\textsuperscript{2,4}},
+%  \textbf{Fifteenth Author\textsuperscript{1}},
+%  \textbf{Sixteenth Author\textsuperscript{1}},
+%\\
+%  \textbf{Seventeenth S. Author\textsuperscript{4,5}},
+%  \textbf{Eighteenth Author\textsuperscript{3,4}},
+%  \textbf{Nineteenth N. Author\textsuperscript{2,5}},
+%  \textbf{Twentieth Author\textsuperscript{1}}
+%\\
+%\\
+%  \textsuperscript{1}Affiliation 1,
+%  \textsuperscript{2}Affiliation 2,
+%  \textsuperscript{3}Affiliation 3,
+%  \textsuperscript{4}Affiliation 4,
+%  \textsuperscript{5}Affiliation 5
+%\\
+%  \small{
+%    \textbf{Correspondence:} \href{mailto:email@domain}{email@domain}
+%  }
+%}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  Large vision-language models increasingly produce detailed open-ended image descriptions, but their long-form responses can still contain fluent object mentions that are not supported by the image.
+  Existing hallucination mitigation methods either improve the model through additional alignment or feedback training---effective but requiring extra data, optimization, and model access---or intervene at inference time through contrastive decoding, attention modification, or other control signals.
+  Training-free decoding methods are easier to deploy across existing models, but many apply dense correction throughout generation or depend on model-specific internal structures.
+  In this work, we propose \textbf{S}parse \textbf{G}uarded \textbf{R}eranking (SGR), a training-free method that studies a complementary possibility: hallucination mitigation as sparse, budgeted trajectory correction.
+  SGR activates an image-free visual-prior branch and a text-only language guard only at a small number of decoding steps, using them to rerank local candidates while leaving most tokens unchanged.
+  Experiments on InternVL and LLaVA-NeXT suggest that sparse guarded intervention reduces object-level hallucination on COCO-CHAIR while preserving response quality, with seed-sensitive behavior on LLaVA-NeXT discussed as a boundary.
+  Ablations further show that the branches are complementary and that larger intervention budgets do not necessarily yield better hallucination-quality trade-offs.
+  \end{abstract}
+
+\section{Introduction}
+
+  Large vision-language models (LVLMs) have become increasingly capable at producing detailed image-grounded responses~\citep{liu-etal-2023-visual-instruction,liu2024llavanext,wang2025internvl35advancingopensourcemultimodal,bai2025qwen3vltechnicalreport}.
+  However, open-ended generation still exposes a persistent failure mode: models may mention objects or visual details that are not supported by the image~\citep{rohrbach-etal-2018-object,li-etal-2023-evaluating,sun-etal-2024-aligning,guan2023hallusionbench}.
+  This problem is especially important in long-form image description, where a response is not a single classification decision but a sequence of many local generation
+  decisions.
+  Even if the model is visually grounded at the beginning, later tokens can gradually drift toward language-prior-dominated continuations, leading to fluent but unsupported
+  object mentions.
+
+  Existing mitigation strategies span several design choices.
+  A direct training-free route is contrastive decoding, which contrasts the original image condition with a degraded or image-free condition during generation~\citep{Leng_2024_CVPR}.
+  Later inference-time variants further modify attention maps~\citep{liu2024payingattentionimagetrainingfree,an2024agla}, use language or instruction contrast~\citep{manevich-tsarfaty-2024-lcd,wang-etal-2024-mitigating}, or exploit intermediate model signals~\citep{su-etal-2025-activation,chen-etal-2025-mixture-decoding}.
+  Another line improves the model itself with factual feedback or preference optimization~\citep{sun-etal-2024-aligning}, which can be effective but requires additional data, optimization, and access to model weights.
+  These approaches have complementary strengths: training-free decoding is easier to apply to existing checkpoints, while training or alignment can change the underlying model behavior.
+  However, many decoding-time methods apply dense correction throughout generation or rely on model-specific internal structures such as attention layers, visual tokens, or layer-wise hidden states.
+  As LVLM backbones become more heterogeneous, this raises a practical question: do we need to correct every decoding step, or can hallucination be reduced by a small number
+  of well-placed interventions?
+
+  We revisit hallucination mitigation from a sparse trajectory-correction perspective.
+  Our key observation is that long-form hallucination is not necessarily caused by every token being wrong.
+  Instead, unsupported content often enters the response through a small number of high-leverage generation moments, after which the language model continues fluently along
+  the chosen trajectory.
+  This suggests that a fixed budget of sparse interventions can improve the hallucination-quality trade-off by occasionally correcting high-leverage steps, without applying
+  contrastive rewriting throughout generation.
+
+  Figure~\ref{fig:intro_teaser} illustrates the intuition.
+  In long-form generation, a single unsupported object mention can enter an otherwise fluent description and make the entire caption hallucinated under object-level evaluation.
+  Sparse guarded decoding aims to correct such high-leverage moments while leaving most of the generation trajectory unchanged.
+
+  \begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/image.png}
+    \caption{
+    Motivating example for sparse guarded decoding.
+    Vanilla decoding can introduce a visually unsupported object mention during long-form image description.
+    SGR activates guarded intervention only at sparse decoding steps, steering the response toward grounded visual content while preserving descriptive generation.
+    The example is illustrative; aggregate results are reported in the experimental section.
+    }
+    \label{fig:intro_teaser}
+  \end{figure}
+
+  Based on this view, we propose SGR, a sparse guarded three-branch reranking method.
+  At most decoding steps, the model follows the original visual branch unchanged.
+  At a small set of randomly selected trigger steps, we compare the original visual distribution with an image-free visual-prior branch and use a text-only language branch
+  as a guard.
+  The visual-prior branch penalizes candidates that remain likely without visual evidence, while the language branch prevents the correction from selecting tokens that are
+  syntactically or semantically implausible.
+  Because the method operates on next-token distributions rather than internal attention modules, it avoids training an additional detector and can be ported across backbones
+  through their decoding interfaces, although some architectures require careful handling of decoding states.
+
+  We evaluate the method on long-form hallucination benchmarks using InternVL and LLaVA-NeXT as the primary backbones.
+  On COCO-CHAIR, the method reduces both CHAIRs and CHAIRi on InternVL, while LLaVA-NeXT shows a more seed-sensitive trade-off.
+  We additionally analyze Qwen-family models as boundary diagnostics, where the gains are weak or mixed despite successful triggering.
+  This suggests that sparse correction is useful only when the auxiliary branches provide a reliable correction signal for the target decoding stack.
+  Additional open-ended evaluations further separate hallucination-sensitive quality from general response quality: MMHal-Bench tests whether hallucination reduction transfers
+  beyond object mentions, while LLaVA-Bench in-the-wild tests whether sparse reranking preserves useful free-form responses.
+  Ablation studies show that all three branches are useful and that increasing the intervention budget does not monotonically improve the hallucination-quality trade-off.
+
+  Our contributions are three-fold:
+  \begin{itemize}
+    \item We formulate long-form LVLM hallucination mitigation as sparse, budgeted trajectory correction rather than dense always-on distribution rewriting.
+    \item We propose SGR, a training-free three-branch reranking method that combines visual-prior contrast with a language guard at a small number of decoding steps.
+    \item We provide experiments on two primary LVLM backbones, showing COCO-CHAIR improvements under the main setting, complementary open-ended benchmark results, and ablations suggesting
+  that sparse intervention can offer a better quality-hallucination trade-off than dense correction; we further discuss Qwen-family diagnostics as a boundary case for future
+  correction-signal design.
+  \end{itemize}
+
+\section{Related Work}
+
+  \paragraph{Hallucination in vision-language models.}
+  Large vision-language models can generate fluent responses that are not fully grounded in the image, especially in open-ended generation.
+  Prior benchmarks and analyses study this problem from object hallucination, instruction-following, and open-ended response quality perspectives, including CHAIR~\citep{rohrbach-etal-2018-object}, POPE~\citep{li-etal-2023-evaluating},
+  HallusionBench~\citep{guan2023hallusionbench}, MMHal-Bench~\citep{sun-etal-2024-aligning}, and LLaVA-Bench~\citep{liu-etal-2023-visual-instruction}.
+  These benchmarks measure different granularities: CHAIR directly counts unsupported object mentions, POPE probes object existence through closed-ended questions, while HallusionBench, MMHal-Bench, and LLaVA-Bench evaluate broader open-ended responses.
+  Recent work also questions whether fine-grained object grounding automatically reduces hallucination in open generation~\citep{geigle2024objectgrounding}.
+  Our work focuses on long-form generation, where hallucination may emerge over the decoding trajectory rather than only from a single visual recognition failure.
+  While alignment-based approaches such as factually augmented RLHF can improve the base model itself~\citep{sun-etal-2024-aligning}, we study the complementary setting where model weights are fixed.
+
+  \paragraph{Decoding-time hallucination mitigation.}
+  A line of work mitigates hallucination without additional training by modifying decoding.
+  Visual contrastive decoding constructs a negative visual condition and contrasts it with the original image distribution~\citep{Leng_2024_CVPR}.
+  Other inference-time approaches strengthen visual grounding through attention intervention~\citep{liu2024payingattentionimagetrainingfree}, language-contrastive reranking~\citep{manevich-tsarfaty-2024-lcd}, instruction contrastive decoding~\citep{wang-etal-2024-mitigating}, adaptive focal-contrast decoding~\citep{chen2024halc}, mutual-information style grounding~\citep{favero2024m3id}, assembly of global and local attention~\citep{an2024agla}, or hierarchical penalty decoding~\citep{yuan-etal-2024-helpd}.
+  These methods show that hallucination can be reduced at inference time, but they often apply dense interventions throughout generation or rely on model-specific internal activations.
+  Recent 2025 work further extends this line with activation steering decoding, mixture-of-decoding, multi-view multi-path reasoning, and visual evidence prompting~\citep{su-etal-2025-activation,chen-etal-2025-mixture-decoding,qu-etal-2025-look,li-etal-2025-visual}.
+  In contrast, our method studies whether a small fixed budget of output-level candidate revisions is sufficient for long-form generation.
+
+  \paragraph{Sparse and model-agnostic intervention.}
+  Our work is related to efficient inference-time control methods that aim to improve generation without updating model parameters.
+  Rather than learning a detector or selecting specific attention heads, we operate on next-token distributions and activate auxiliary branches only at sparse decoding
+  steps.
+  This gives a different perspective on hallucination mitigation: the goal is not to correct every step, but to occasionally steer the generation trajectory away from
+  language-prior-dominated states while preserving fluency and visual coverage.
+
+\section{Method}
+
+  Figure~\ref{fig:method_overview} abstracts the overall SGR workflow.
+  The model follows the native visual decoding path for most tokens.
+  Only at a small number of selected inspection steps, the method activates the auxiliary image-free prior branch and text-only guard branch, reranks a compact candidate set, and then either accepts a guarded replacement or falls back to the vanilla visual token.
+
+  \begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/figure1.png}
+    \caption{
+    Overview of Sparse Guarded Reranking (SGR).
+    The fast path keeps ordinary visual decoding unchanged for most tokens.
+    At sparse inspection steps, the visual branch proposes likely candidates, the image-free prior branch penalizes candidates that remain likely without reliable visual evidence, and the text-only branch guards against syntactically or semantically implausible replacements.
+    The final token is selected by guarded reranking; if no candidate passes the guard, decoding falls back to the original visual token.
+    }
+    \label{fig:method_overview}
+  \end{figure*}
+
+ \subsection{Decoding of Vision-Language Models}
+
+  Given an image $I$ and a textual instruction $x$, a multimodal large language model generates a response autoregressively. At decoding step $t$, the model predicts the next-token distribution conditioned on the
+  image, the instruction, and the previously generated prefix $y_{<t}$:
+  \begin{equation}
+  p_{\mathrm{vis}}(y_t \mid I, x, y_{<t}).
+  \end{equation}
+  Under greedy decoding, the next token is selected as
+  \begin{equation}
+  y_t^{\mathrm{vis}}
+  =
+  \arg\max_{c \in \mathcal{V}}
+  p_{\mathrm{vis}}(c \mid I, x, y_{<t}),
+  \end{equation}
+  where $\mathcal{V}$ denotes the vocabulary.
+
+  This standard decoding process is efficient and preserves the model's original generation behavior, but long-form visual descriptions can still contain visually unsupported objects. Existing contrastive decoding
+  methods address this issue by modifying the next-token distribution with auxiliary visual or textual signals. In this work, we revisit this design from a sparse-intervention perspective: instead of correcting every
+  decoding step, we inspect only a small subset of steps and apply guarded reranking when needed.
+
+\subsection{From Dense Correction to Sparse Inspection}
+
+  A straightforward way to incorporate auxiliary signals is to modify the decoding distribution at every generation step. While such dense correction can suppress hallucinated tokens, it is not always desirable for
+  long-form visual generation. Detailed image descriptions contain many tokens that do not require visual correction, including function words, relations, attributes, and objects that are already well grounded.
+  Applying an auxiliary contrast at every step may therefore over-regularize the generation process, reducing visual coverage or making the response overly conservative.
+
+  We instead treat hallucination mitigation as a sparse inspection problem. Before generation, we uniformly sample $K$ distinct decoding steps from the maximum decoding horizon $\{1,\ldots,T_{\max}\}$, and denote the
+  resulting inspection set as $\mathcal{S}_K$:
+  \begin{equation}
+  \mathcal{S}_K \subseteq \{1,\ldots,T_{\max}\},
+  \qquad
+  |\mathcal{S}_K| = K .
+  \end{equation}
+  For steps outside this set, decoding follows the vanilla visual branch:
+  \begin{equation}
+  y_t = y_t^{\mathrm{vis}}, \qquad t \notin \mathcal{S}_K .
+  \end{equation}
+  Only when $t \in \mathcal{S}_K$ do we invoke auxiliary branches and perform guarded reranking.
+
+  This formulation separates the decision of \emph{when to inspect} from the decision of \emph{how to revise}. The sparse schedule allocates a small correction budget along the decoding trajectory, but it does not
+  directly determine the output token. Token selection remains deterministic and is handled by the guarded reranking module described in the next section. If no candidate passes the guard, the method falls back to the
+  vanilla visual token.
+
+  The sparse inspection view also avoids relying on a single handcrafted trigger, such as entropy, attention magnitude, or top-token margin. These signals can be unstable across model families and decoding
+  implementations: a model may assign high confidence to a visually unsupported token, or maintain strong visual attention while still following a language prior. Our method therefore makes a weaker assumption. Rather
+  than trying to predict every risky step in advance, it uses a fixed-budget inspection schedule and applies a conservative correction rule only when the auxiliary branches support a safe replacement. In our
+  ablations, both the budget sweep and the schedule sweep show that sparse inspection itself carries signal: a small number of checks already improves the hallucination-quality trade-off, while denser intervention
+  does not improve monotonically.
+
+\subsection{Guarded Three-Branch Reranking}
+
+When a decoding step $t$ is selected for inspection, we rerank only a small set of plausible next-token candidates instead of modifying the full vocabulary distribution. For brevity, we write
+  $p_{\mathrm{vis}}^t(c)$, $p_{\mathrm{prior}}^t(c)$, and $p_{\mathrm{lang}}^t(c)$
+  for the next-token probabilities of candidate $c$ under the visual branch, the image-free prior branch, and the text-only language branch, respectively. All three branches condition on the same instruction $x$ and
+  generated prefix $y_{<t}$, but differ in their visual inputs.
+
+  The visual branch $p_{\mathrm{vis}}^t(c)$ uses the original image $I$ and serves as the candidate proposal distribution. We define the candidate set as the top-$M$ tokens under this branch:
+  \begin{equation}
+  \mathcal{C}_t = \mathrm{TopM}\left(p_{\mathrm{vis}}^t\right).
+  \end{equation}
+  Restricting reranking to $\mathcal{C}_t$ prevents low-probability tokens from being promoted solely by auxiliary branches.
+  We further apply a lightweight APC mask that keeps only candidates with sufficient visual support:
+  \begin{equation}
+  \mathcal{C}_t^{\eta} =
+  \left\{
+  c \in \mathcal{C}_t :
+  p_{\mathrm{vis}}^t(c) \ge
+  \eta \max_{c' \in \mathcal{C}_t} p_{\mathrm{vis}}^t(c')
+  \right\},
+  \end{equation}
+  where $\eta$ is a tuned candidate-support threshold.
+  This mask prevents the prior branch from rescuing candidates that are far below the visual proposal distribution.
+
+  The image-free prior branch $p_{\mathrm{prior}}^t(c)$ is computed by replacing the image with an input that contains unreliable visual evidence, such as a black or heavily blurred image, denoted as
+  $I_{\varnothing}$. This branch should not be interpreted as a hallucination oracle. Instead, it estimates whether a candidate can be strongly supported even when reliable visual evidence is removed. We therefore use
+  it as a soft penalty against prior-driven candidates.
+  To keep reranking local to the visual proposal set, we normalize the visual and prior logits over $\mathcal{C}_t^{\eta}$:
+  \begin{equation}
+  \tilde{p}_{b}^{t}(c) =
+  \frac{\exp \ell_{b}^{t}(c)}
+  {\sum_{c' \in \mathcal{C}_t^{\eta}} \exp \ell_{b}^{t}(c')},
+  \qquad
+  b \in \{\mathrm{vis}, \mathrm{prior}\}.
+  \end{equation}
+  Here $\ell_b^t$ denotes the branch logit before the local softmax.
+  For each $c \in \mathcal{C}_t^{\eta}$, we compute
+  \begin{equation}
+  r(c) =
+  (1+\alpha)\log \tilde{p}_{\mathrm{vis}}^t(c)
+  -
+  \alpha \log \tilde{p}_{\mathrm{prior}}^t(c),
+  \end{equation}
+  where $\alpha$ controls the strength of the prior penalty.
+
+  Contrastive reranking alone may introduce unnatural or syntactically incompatible replacements. To avoid this, we introduce a text-only language branch $p_{\mathrm{lang}}^t(c)$ as a guard. This branch removes the
+  image input and measures whether a candidate is compatible with the current textual context. The guard threshold is set dynamically relative to the vanilla visual token:
+  \begin{equation}
+  \tau_t =
+  \max\left(
+  \tau_{\min},
+  p_{\mathrm{lang}}^t(y_t^{\mathrm{vis}}) + \gamma
+  \right),
+  \label{eq:text_guard_threshold}
+  \end{equation}
+  where $\tau_{\min}$ is a minimum language-support threshold and $\gamma$ is a small guard margin. The guard then defines an admissible set:
+  \begin{equation}
+  \mathcal{A}_t =
+  \left\{
+  c \in \mathcal{C}_t^{\eta} :
+  p_{\mathrm{lang}}^t(c) \ge \tau_t
+  \right\}.
+  \end{equation}
+  Thus, a replacement candidate must be more compatible with the text-only prefix than the vanilla visual token by the guard margin, while also satisfying a minimum support floor.
+
+  The final token is selected by guarded reranking:
+  \begin{equation}
+  y_t =
+  \begin{cases}
+  \displaystyle
+  \arg\max_{c \in \mathcal{A}_t} r(c),
+  & \text{if } \mathcal{A}_t \neq \emptyset,\\[6pt]
+  y_t^{\mathrm{vis}},
+  & \text{otherwise}.
+  \end{cases}
+  \end{equation}
+  Thus, the visual branch proposes plausible candidates, the image-free prior branch penalizes candidates likely to be driven by non-visual priors, and the language branch prevents incoherent replacements. If no
+  candidate passes the guard, the method leaves the vanilla visual token unchanged.
+
+\subsection{Algorithm and Complexity}
+
+  Algorithm~\ref{alg:sparse-guarded-decoding} summarizes the complete decoding procedure. The method follows vanilla greedy decoding for most steps and invokes the guarded three-branch reranker only when the current
+  position belongs to the sparse inspection set $\mathcal{S}_K$.
+
+  \begin{algorithm}[t]
+  \caption{Sparse Guarded Reranking (SGR)}
+  \label{alg:sparse-guarded-decoding}
+  \begin{algorithmic}[1]
+  \Require image $I$, instruction $x$, maximum length $T_{\max}$, budget $K$, candidate size $M$, thresholds $\eta,\tau_{\min},\gamma$
+  \State Sample $K$ inspection steps $\mathcal{S}_K \subseteq \{1,\ldots,T_{\max}\}$
+  \State Initialize generated prefix $y_{<1} \leftarrow \emptyset$
+  \For{$t = 1$ to $T_{\max}$}
+      \State Compute visual distribution $p_{\mathrm{vis}}^t$
+      \State $y_t^{\mathrm{vis}} \leftarrow \arg\max_c p_{\mathrm{vis}}^t(c)$
+      \If{$t \notin \mathcal{S}_K$}
+          \State $y_t \leftarrow y_t^{\mathrm{vis}}$
+      \Else
+          \State Construct candidate set $\mathcal{C}_t = \mathrm{TopM}(p_{\mathrm{vis}}^t)$
+          \State Apply APC mask to obtain $\mathcal{C}_t^{\eta}$
+          \State Compute $p_{\mathrm{prior}}^t$ and $p_{\mathrm{lang}}^t$
+          \State Compute candidate-local reranking score $r(c)$ for each $c \in \mathcal{C}_t^{\eta}$
+          \State Construct admissible set $\mathcal{A}_t$ using the language guard
+          \If{$\mathcal{A}_t \neq \emptyset$}
+              \State $y_t \leftarrow \arg\max_{c \in \mathcal{A}_t} r(c)$
+          \Else
+              \State $y_t \leftarrow y_t^{\mathrm{vis}}$
+          \EndIf
+      \EndIf
+      \If{$y_t$ is an end-of-sequence token}
+          \State \textbf{break}
+      \EndIf
+      \State Append $y_t$ to the generated prefix
+  \EndFor
+  \State \Return generated response $y$
+  \end{algorithmic}
+  \end{algorithm}
+
+  The sparse inspection budget directly controls the computational overhead. Vanilla decoding requires one visual forward pass per generated token. Our method uses the same visual branch at every step, but
+  additionally invokes the image-free prior branch and the language branch only at selected inspection steps. If the generated sequence length is $L$ and $K_L=|\mathcal{S}_K \cap \{1,\ldots,L\}|$ inspection steps are
+  actually reached before termination, the idealized relative number of branch evaluations is approximately
+  \begin{equation}
+  1 + \frac{2K_L}{L}.
+  \end{equation}
+  This estimate highlights the difference between sparse and dense correction. When $K_L \ll L$, the additional cost is limited to a small fraction of the generation trajectory. When $K = T_{\max}$, the method
+  degenerates into dense three-branch reranking, which we use only as an ablation.
+
+  In practice, the wall-clock overhead depends on model implementation details, cache reuse, and the cost of auxiliary branches. We therefore report measured latency in addition to the theoretical budget. Across our
+  experiments, sparse three-branch decoding adds only modest overhead while avoiding the quality degradation observed under dense intervention.
+
+
+
+
+\section{Experiments}
+
+\subsection{Experimental Setup}
+
+  \paragraph{Task and evaluation setting.}
+  We evaluate hallucination mitigation under open-ended, long-form image description.
+  This setting is intentionally different from closed-ended hallucination benchmarks, where the model usually answers with a short ``yes'' or ``no''.
+  Our focus is on whether a decoding-time method can reduce unsupported object mentions while preserving the descriptive richness of long generated responses.
+
+  Our primary benchmark is COCO-CHAIR, following the standard object hallucination evaluation protocol on MSCOCO images and annotations~\citep{rohrbach-etal-2018-object,DBLP:conf/eccv/LinMBHPRDZ14}.
+  We use a fixed set of 500 validation images for the main COCO experiments, and all methods under the same backbone are evaluated with the same image order, prompt, and generation length budget.
+  We report CHAIRs and CHAIRi as hallucination metrics, where CHAIRs measures the fraction of captions containing at least one hallucinated object and CHAIRi measures the fraction of hallucinated object mentions.
+  We also report object recall, precision, F1, and average generated length to characterize the trade-off between hallucination suppression and visual coverage.
+
+  \paragraph{Models.}
+  We use two recent vision-language backbones as the primary evaluation setting: InternVL3.5-8B~\citep{wang2025internvl35advancingopensourcemultimodal} and LLaVA-NeXT based on LLaVA-1.6-Mistral-7B~\citep{liu2024llavanext}.
+  InternVL is used as the main stability testbed because it provides the most stable multi-seed improvements in our experiments.
+  LLaVA-NeXT is used for detailed ablation and mechanism analysis, since its generation length and runtime make dense and sparse intervention variants easier to compare.
+  We additionally run Qwen-family diagnostics, including Qwen3-VL-8B-Instruct~\citep{bai2025qwen3vltechnicalreport}, as a boundary analysis rather than as a primary comparison, because these runs show weak or mixed gains under the current correction signal.
+
+  \paragraph{Compared methods.}
+  For each primary backbone, we compare against vanilla greedy decoding under the same prompt and maximum generation length.
+  For LLaVA-NeXT and InternVL, we additionally include direct adaptations of representative decoding-time hallucination mitigation methods, including VCD-style visual contrastive decoding~\citep{Leng_2024_CVPR} and PAI-style attention
+  intervention~\citep{liu2024payingattentionimagetrainingfree}.
+  Because the original implementations of these methods were developed for different backbones and generation settings, we keep their decoding-time form but do not claim official reproduction.
+  We use the same core reranking hyperparameters across backbones whenever the same component is shared, and only adjust the sparse budget and maximum decoding horizon to match the generation length of each model.
+
+  \paragraph{Decoding configuration.}
+  All main results use greedy decoding to isolate the effect of the proposed reranking mechanism from sampling variance.
+  For our sparse method, we sample a fixed budget of intervention steps within the effective generation horizon and apply three-branch reranking only at those steps.
+  Unless otherwise stated, we use the main sparse budget selected from our preliminary budget sweep: $K=8$ for InternVL and $K=10$ for LLaVA-NeXT.
+  The APC mask uses $\eta=0.10$.
+  The text guard uses $\tau_{\min}=0.05$ and $\gamma=0.01$ in Eq.~\ref{eq:text_guard_threshold}, matching the syntax-threshold and syntax-margin settings in our implementation.
+  For multi-seed results, the random seed only changes the sampled intervention positions; the underlying model, prompt, and greedy decoding process remain fixed.
+  For mechanistic and local-correction analyses, we additionally compare against matched decoder-control baselines because hand-written decoding loops can shift CHAIR scores even without reranking.
+
+  \paragraph{Supplementary open-ended benchmarks.}
+  In addition to COCO-CHAIR, we evaluate open-ended response quality on MMHal-Bench~\citep{sun-etal-2024-aligning} and LLaVA-Bench in-the-wild~\citep{liu-etal-2023-visual-instruction}.
+  The three evaluations serve different roles.
+  COCO-CHAIR provides a controlled object-level hallucination metric, MMHal-Bench measures hallucination-sensitive open-ended response quality, and LLaVA-Bench in-the-wild measures broader helpfulness and informativeness under free-form prompts.
+  Together, they test whether hallucination reduction is accompanied by preserved or improved response quality rather than by shorter or more conservative outputs.
+  We do not use closed-ended discriminative benchmarks such as POPE~\citep{li-etal-2023-evaluating} as primary evidence, because our method is designed for long-form generation trajectories rather than short binary answers.
+
+
+\subsection{Main Results on COCO-CHAIR}
+
+  Table~\ref{tab:chair_main} reports the main COCO-CHAIR results on the two primary backbones.
+  Across the two primary backbones, our sparse three-branch reranking reduces object hallucination under the main long-form setting while preserving comparable caption quality.
+  On InternVL, our method achieves the most stable improvement: averaged over three random intervention seeds, it reduces CHAIRs from 35.4 to 32.8 and CHAIRi from 9.03 to 8.23, while slightly improving F1.
+  This result suggests that the benefit is not tied to a single favorable random trigger pattern.
+
+  On LLaVA-NeXT, the selected sparse three-branch run improves both hallucination metrics, reducing CHAIRs from 33.6 to 32.4 and CHAIRi from 8.22 to 7.66.
+  The gain is more seed-sensitive than on InternVL; Appendix~\ref{app:additional_diagnostics} reports the multi-seed diagnostic, where the mean remains close to vanilla but CHAIRi still improves on average.
+  The same main configuration also improves precision and F1 under the fixed long-form captioning setup.
+  Overall, these results support a better hallucination-quality trade-off under the evaluated settings, rather than a universal improvement on every metric.
+  In contrast, directly adapted dense contrastive or attention-based baselines do not show the same trade-off in our setting.
+  Adapted VCD increases recall but also increases CHAIRs and CHAIRi, while adapted PAI does not reduce hallucination under the same LLaVA-NeXT protocol.
+  These results suggest that dense or internal interventions are not automatically robust when transferred to newer backbones and longer outputs.
+
+  We summarize Qwen-family behavior in Appendix~\ref{app:qwen_boundary} as a boundary diagnostic, because the current correction signal does not yield robust aggregate improvements on that generation stack.
+
+  \begin{table*}[t]
+    \centering
+    \small
+    \begin{tabular}{llcccccc}
+    \hline
+    Model & Method & CHAIRs $\downarrow$ & CHAIRi $\downarrow$ & Recall $\uparrow$ & Precision $\uparrow$ & F1 $\uparrow$ & Len \\
+    \hline
+    InternVL & Vanilla & 35.4 & 9.03 & 70.1 & 82.7 & 75.9 & 130.6 \\
+    InternVL & Adapted VCD & 38.2 & 10.23 & 70.9 & 81.3 & 75.7 & 133.3 \\
+    InternVL & Adapted PAI & 38.0 & 9.38 & \textbf{71.0} & 81.5 & 75.9 & 136.4 \\
+    InternVL & SGR (Ours) & \textbf{32.8} & \textbf{8.23} & 70.9 & \textbf{83.8} & \textbf{76.8} & 131.4 \\
+    \hline
+    LLaVA-NeXT & Vanilla & 33.6 & 8.22 & 66.8 & 82.9 & 74.0 & 198.8 \\
+    LLaVA-NeXT & Adapted VCD & 39.2 & 9.89 & \textbf{71.4} & 80.9 & \textbf{75.8} & 196.5 \\
+    LLaVA-NeXT & Adapted PAI & 38.6 & 9.64 & 67.8 & 81.0 & 73.8 & 193.4 \\
+    LLaVA-NeXT & SGR (Ours) & \textbf{32.4} & \textbf{7.66} & 67.2 & \textbf{83.7} & 74.5 & 198.6 \\
+    \hline
+    \end{tabular}
+    \caption{
+    COCO-CHAIR results on long-form image description.
+    InternVL and LLaVA-NeXT are the two primary backbones, where SGR reduces both CHAIRs and CHAIRi.
+    Lower CHAIRs and CHAIRi indicate fewer object hallucinations.
+    InternVL results for SGR are averaged over three intervention seeds.
+    Adapted VCD/PAI denote our direct adaptations to the corresponding modern backbones and long-form setting.
+    }
+    \label{tab:chair_main}
+  \end{table*}
+
+
+ \subsection{Generalization to Open-Ended Benchmarks}
+
+  COCO-CHAIR only evaluates object mentions grounded in MSCOCO annotations, so we use MMHal-Bench and LLaVA-Bench in-the-wild to test open-ended behavior beyond CHAIR.
+  This separation checks whether lower CHAIR scores come from useful correction rather than shorter or overly conservative outputs.
+
+  \paragraph{Judge protocol.}
+  For the main open-ended results, we use GLM-4.5-Air as the automatic judge for both baseline and our method under the same prompt and parsing protocol.
+  Since automatic judge models can affect absolute scores, we only interpret relative differences within the same judge setting and do not compare these numbers directly
+  with GPT-4-based leaderboards.
+  Additional judge sanity checks are reported in Appendix~\ref{app:additional_diagnostics}.
+
+  \paragraph{MMHal-Bench.}
+  Table~\ref{tab:open_ended} shows that our method improves the average MMHal score on both LLaVA-NeXT and InternVL under the GLM judge.
+  On LLaVA-NeXT, the hallucination rate decreases from 0.3854 to 0.3438.
+  On InternVL, the hallucination rate remains unchanged, while the average score increases from 4.0104 to 4.1146.
+  Supplementary judge checks show small and judge-dependent effects, so we keep GLM-4.5-Air as the primary judge and report OpenAI-compatible judge results in Appendix~\ref{app:mmhal_judge_checks}.
+
+  \paragraph{LLaVA-Bench in-the-wild.}
+  We then evaluate general open-ended response quality on LLaVA-Bench in-the-wild using the same GLM judge.
+  For InternVL, our method improves the overall ratio from 74.3 to 78.6 and improves the complex subset from 77.4 to 82.9.
+  For LLaVA-NeXT, the overall score remains comparable to the baseline, while the complex subset improves from 76.0 to 80.1.
+  The gains are therefore most visible on complex open-ended prompts rather than short conversational prompts.
+  This behavior matches our motivation: sparse reranking is designed to correct long-form decoding trajectories, not to optimize short discriminative answers.
+
+  \begin{table*}[t]
+    \centering
+    \small
+    \begin{tabular}{llcccc}
+    \hline
+    Benchmark & Model & Method & Main Score $\uparrow$ & Hall. Rate $\downarrow$ & Complex $\uparrow$ \\
+    \hline
+    MMHal-Bench & LLaVA-NeXT & Vanilla & 3.7708 & 0.3854 & -- \\
+    MMHal-Bench & LLaVA-NeXT & SGR (Ours) & \textbf{3.9167} & \textbf{0.3438} & -- \\
+    MMHal-Bench & InternVL & Vanilla & 4.0104 & 0.3125 & -- \\
+    MMHal-Bench & InternVL & SGR (Ours) & \textbf{4.1146} & 0.3125 & -- \\
+    \hline
+    LLaVA-Bench & LLaVA-NeXT & Vanilla & 66.5 & -- & 76.0 \\
+    LLaVA-Bench & LLaVA-NeXT & SGR (Ours) & \textbf{66.7} & -- & \textbf{80.1} \\
+    LLaVA-Bench & InternVL & Vanilla & 74.3 & -- & 77.4 \\
+    LLaVA-Bench & InternVL & SGR (Ours) & \textbf{78.6} & -- & \textbf{82.9} \\
+    \hline
+    \end{tabular}
+    \caption{
+    Open-ended benchmark results beyond COCO-CHAIR.
+    Main results are judged by GLM-4.5-Air under the same prompt and parsing protocol.
+    MMHal-Bench evaluates hallucination-sensitive free-form quality and reports average score and hallucination rate.
+    LLaVA-Bench evaluates broader open-ended response quality and reports the model-to-reference score ratio, where higher is better.
+    The complex column is shown because complex open-ended prompts most closely match our long-form generation setting.
+    }
+    \label{tab:open_ended}
+  \end{table*}
+
+  Overall, these results indicate that the improvements on COCO-CHAIR are not obtained by simply making captions shorter or less informative.
+  The method maintains comparable open-ended response quality and shows clearer gains on complex prompts, supporting our claim that sparse trajectory correction is most
+  useful when hallucination emerges during extended generation.
+
+
+  \subsection{Ablation Study}
+
+  We conduct ablations to understand which components of the proposed decoding procedure are responsible for the observed improvements.
+  We focus on two questions: whether all three branches are necessary, and how the sparse intervention budget affects the trade-off between hallucination suppression and
+  response quality.
+
+  \paragraph{Branch ablation.}
+  Table~\ref{tab:branch_ablation} compares the full method with two reduced variants.
+  The \textit{black-only} variant removes the language-prior guard and reranks candidates only by contrasting the original-image branch against the black-image prior branch.
+  The \textit{text-only} variant removes the black-image prior and only uses the text branch as a contrastive signal.
+  On both InternVL and LLaVA-NeXT, the full method provides the best or most stable CHAIRi reduction, suggesting that prior contrast and the text guard play complementary roles.
+
+ \begin{table}[t]
+    \centering
+    \small
+    \setlength{\tabcolsep}{3.5pt}
+    \begin{tabular}{llccc}
+    \hline
+    Model & Variant & CHAIRs $\downarrow$ & CHAIRi $\downarrow$ & F1 $\uparrow$ \\
+    \hline
+    InternVL & SGR (Full) & \textbf{32.8} & \textbf{8.23} & 76.81 \\
+    InternVL & Black & 33.3 & 8.40 & 76.76 \\
+    InternVL & Text & 33.7 & 8.48 & 76.80 \\
+    \hline
+    LLaVA & SGR (Full) & \textbf{32.4} & \textbf{7.66} & \textbf{74.53} \\
+    LLaVA & Black & 33.0 & 8.40 & 73.70 \\
+    LLaVA & Text & 33.8 & 8.40 & 73.80 \\
+    \hline
+    \end{tabular}
+    \caption{
+    Branch ablation on COCO-CHAIR.
+    Black denotes removing the language-prior guard, and Text denotes removing the black-image prior branch.
+    }
+    \label{tab:branch_ablation}
+  \end{table}
+
+  \paragraph{Sparse budget.}
+  Table~\ref{tab:sparse_budget} studies the effect of changing the number of intervention steps.
+  Increasing the budget does not monotonically improve the trade-off: dense LLaVA-NeXT intervention obtains lower CHAIR scores but sharply lowers recall and F1, while InternVL $K=50$ weakens the main $K=8$ gain.
+  These results support treating long-form hallucination mitigation as sparse trajectory correction rather than dense always-on intervention.
+
+  \begin{table*}[t]
+    \centering
+    \small
+    \begin{tabular}{llcccccc}
+    \hline
+    Model & Setting & $K$ & CHAIRs $\downarrow$ & CHAIRi $\downarrow$ & Recall $\uparrow$ & F1 $\uparrow$ & Note \\
+    \hline
+    LLaVA-NeXT & Vanilla & 0 & 33.6 & 8.22 & 66.8 & 74.0 & -- \\
+    LLaVA-NeXT & SGR (Ours) & 10 & 32.4 & 7.66 & 67.2 & 74.5 & main \\
+    LLaVA-NeXT & Mid-budget & 50 & 33.6 & 7.83 & 66.6 & 74.0 & weaker \\
+    LLaVA-NeXT & Dense & 500 & \textbf{27.0} & \textbf{7.01} & 59.9 & 70.0 & over-constrained \\
+    \hline
+    InternVL & Vanilla & 0 & 35.4 & 9.03 & 70.1 & 75.9 & -- \\
+    InternVL & SGR (Ours) & 8 & \textbf{32.8} & \textbf{8.23} & \textbf{70.9} & \textbf{76.8} & main \\
+    InternVL & Mid-budget & 50 & 35.4 & 9.01 & 70.3 & 76.1 & weaker \\
+    \hline
+    \end{tabular}
+    \caption{
+    Sparse budget ablation.
+    Increasing the number of intervention steps does not monotonically improve the overall trade-off.
+    Dense intervention can reduce hallucination metrics but substantially hurts recall and F1, while moderate budget increases often weaken the sparse setting.
+    }
+    \label{tab:sparse_budget}
+  \end{table*}
+
+\subsection{Efficiency and Mechanistic Analysis}
+
+  SGR is a sparse decoding-time intervention rather than an always-on contrastive decoder.
+  Appendix~\ref{app:additional_diagnostics} reports latency, trigger hits, effective interventions, guard accept/fallback counts, object-near rates, and a visualization of the budget trade-off.
+  These diagnostics suggest that sparse reranking helps by occasionally hitting high-leverage trajectory states, while dense intervention can over-constrain generation.
+
+
+\section{Limitations}
+
+Our results should be interpreted as evidence for sparse decoding-time trajectory correction, not as a guarantee that every hallucinated object mention can be removed. The method improves the hallucination-quality trade-off most clearly on InternVL and LLaVA-NeXT. Additional Qwen-family diagnostics, summarized in Appendix~\ref{app:qwen_boundary}, expose an important boundary case: the current correction signal produces weak or mixed gains despite successful triggering and accepted interventions.
+
+A second limitation is that decoding implementations themselves can affect CHAIR scores. In our InternVL experiments, a hand-written decoder-control baseline without reranking obtains lower CHAIR than the native chat-style vanilla baseline. Therefore, mechanism and local-correction analyses should be interpreted against matched decoder-control baselines, while the main comparison reports native vanilla results for each backbone.
+
+Finally, trigger selection and correction-signal design remain imperfect. Explicitly triggering on object-like candidates does not automatically yield better net correction, and COCO-CHAIR remains object-centric and MSCOCO-bound. The current gains also depend on the match between the correction signal and the underlying backbone, so the method should be viewed as a transferable inference-time framework rather than a universally robust fix. Future work should develop correction signals that better match newer multimodal fusion and decoding distributions, and should extend sparse guarded correction beyond object nouns to attributes, relations, and fine-grained visual states.
+
+\section{Ethical Considerations}
+
+This work studies training-free inference-time mitigation of hallucinated object mentions in long-form vision-language generation. Although the proposed method can reduce some object-level hallucinations, it does not guarantee factual or safe outputs and should not be used as the only reliability mechanism in high-stakes settings. Our experiments use public benchmarks and model checkpoints, and do not involve private user data or human-subject data collection.
+
+
+
+
+
+% Bibliography entries for the entire Anthology, followed by custom entries
+%\bibliography{anthology,custom}
+% Custom bibliography entries only
+\bibliography{custom}
+
+\clearpage
+\onecolumn
+\appendix
+
+\section{Additional Diagnostics}
+\label{app:additional_diagnostics}
+
+\subsection{Sparse Event Statistics}
+
+Table~\ref{tab:appendix_mechanism} reports the diagnostic quantities used to interpret whether sparse reranking is actually firing at useful local correction points.
+The LLaVA-NeXT row uses a 100-image trace subset where object-near events are computed post hoc from an object-decision proxy.
+The InternVL row uses the object-aware diagnostic trigger, so its object-near rate is object-gated by construction and is not used as a main-result setting.
+
+\begin{table}[h]
+  \centering
+  \small
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular}{lccccc}
+  \hline
+  Setting & $N$ & Trig. & Eff. & Guard A/F & Obj.-near \\
+  \hline
+  LLaVA random trace & 100 & 469 & 65 & 65/404 & 16.4 \\
+  InternVL object gate & 500 & 7814 & 516 & 516/582 & 100.0 \\
+  \hline
+  \end{tabular}
+  \caption{
+  Mechanism diagnostics.
+  Trig. is trigger hits, Eff. is effective interventions, Guard A/F is guard accept/fallback count, and Obj.-near is the percentage of triggered events near the object-decision proxy.
+  For LLaVA, 23.1\% of effective interventions are object-near.
+  }
+  \label{tab:appendix_mechanism}
+\end{table}
+
+\subsection{Budget Trade-off Visualization}
+
+Figure~\ref{fig:sparse_tradeoff} visualizes the LLaVA-NeXT budget trade-off summarized in Table~\ref{tab:sparse_budget}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.78\textwidth]{figures/figure3-2.png}
+  \caption{
+  SGR intervention budget trade-off on LLaVA-NeXT.
+  Dense intervention obtains the lowest CHAIRi but substantially lowers F1, indicating over-correction and reduced visual coverage.
+  }
+  \label{fig:sparse_tradeoff}
+\end{figure}
+
+\subsection{Efficiency Diagnostic}
+
+Table~\ref{tab:efficiency} reports wall-clock efficiency on 500 COCO images.
+The InternVL loop baseline uses the same hand-written decoding loop without reranking, and is included to separate decoding-loop overhead from auxiliary-branch overhead.
+
+\begin{table}[h]
+  \centering
+  \small
+  \setlength{\tabcolsep}{3.5pt}
+  \begin{tabular}{llccc}
+  \hline
+  Model & Method & Sec/Img & Rel. & Extra Calls \\
+  \hline
+  LLaVA & Vanilla & 6.030 & 1.00$\times$ & 0.00 \\
+  LLaVA & SGR (Ours) & 7.562 & 1.25$\times$ & 9.35 \\
+  \hline
+  InternVL & Vanilla & 3.316 & 1.00$\times$ & 0.00 \\
+  InternVL & Loop & 3.327 & 1.00$\times$ & 0.00 \\
+  InternVL & SGR (Ours) & 3.858 & 1.16$\times$ & 11.18 \\
+  \hline
+  \end{tabular}
+  \caption{
+  Efficiency on 500 COCO images.
+  Extra Calls denotes the average number of auxiliary branch forward calls per image.
+  }
+  \label{tab:efficiency}
+\end{table}
+
+\subsection{LLaVA-NeXT Seed Diagnostic}
+
+Table~\ref{tab:appendix_llava_seed} reports the LLaVA-NeXT global $K=10$ seed diagnostic.
+The vanilla row is deterministic under greedy decoding; SGR changes only the sampled inspection positions.
+These results explain why we treat LLaVA-NeXT as seed-sensitive: CHAIRi improves on average, while CHAIRs varies across sparse schedules.
+
+\begin{table}[h]
+  \centering
+  \small
+  \begin{tabular}{llccccc}
+  \hline
+  Method & Seed & CHAIRs $\downarrow$ & CHAIRi $\downarrow$ & Recall $\uparrow$ & Precision $\uparrow$ & F1 $\uparrow$ \\
+  \hline
+  Vanilla & -- & 33.6 & 8.22 & 66.8 & 82.9 & 74.0 \\
+  SGR & 20260422 & 33.6 & 7.88 & 66.9 & 83.3 & 74.2 \\
+  SGR & 20260423 & 32.4 & 7.66 & 67.2 & 83.7 & 74.5 \\
+  SGR & 20260424 & 35.2 & 8.56 & 66.4 & 82.1 & 73.4 \\
+  SGR & mean$\pm$std & 33.7$\pm$1.4 & 8.03$\pm$0.47 & 66.8$\pm$0.39 & 83.0$\pm$0.82 & 74.0$\pm$0.56 \\
+  \hline
+  \end{tabular}
+  \caption{
+  LLaVA-NeXT multi-seed diagnostic under the same global sparse schedule.
+  The main table reports the selected sparse run, while this appendix table shows the seed sensitivity of the LLaVA setting.
+  }
+  \label{tab:appendix_llava_seed}
+\end{table}
+
+\subsection{Additional Judge Checks}
+\label{app:mmhal_judge_checks}
+
+As non-primary sanity checks, we also re-evaluate MMHal-Bench with OpenAI-compatible judges.
+Table~\ref{tab:mmhal_judge_checks} reports the judge-specific results.
+The GPT-5.4-mini checks cover all 96 MMHal-Bench examples for both InternVL and LLaVA-NeXT.
+For LLaVA-NeXT, we also run a paired GPT-5.4 check over the same 96 answer pairs.
+The supplementary judges show smaller and sometimes mixed changes in average score, while the hallucination-rate changes are generally small.
+We therefore keep GLM-4.5-Air as the primary open-ended judge in Table~\ref{tab:open_ended}, and use these results only as judge-sensitivity diagnostics.
+
+\begin{table*}[t]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4.5pt}
+  \begin{tabular}{llccccc}
+  \hline
+  Model & Judge & $N$ & Score V. & Score SGR & Hall. V. & Hall. SGR \\
+  \hline
+  LLaVA-NeXT & GLM-4.5-Air & 96 & 3.7708 & 3.9167 & 0.3854 & 0.3438 \\
+  LLaVA-NeXT & GPT-5.4-mini & 96 & 2.8125 & 2.6979 & 0.5000 & 0.5313 \\
+  LLaVA-NeXT & GPT-5.4 pairwise & 96 & 2.2500 & 2.2708 & 0.6563 & 0.6354 \\
+  \hline
+  InternVL & GLM-4.5-Air & 96 & 4.0104 & 4.1146 & 0.3125 & 0.3125 \\
+  InternVL & GPT-5.4-mini & 96 & 3.4167 & 3.4479 & 0.3854 & 0.3542 \\
+  \hline
+  \end{tabular}
+  \caption{
+  MMHal-Bench judge-sensitivity diagnostics.
+  V. denotes vanilla decoding.
+  Scores are average MMHal scores; Hall. is hallucination rate.
+  GPT-5.4 pairwise is available for LLaVA-NeXT only in the current experiment logs.
+  }
+  \label{tab:mmhal_judge_checks}
+\end{table*}
+
+\section{Qwen-Family Boundary Diagnostic}
+\label{app:qwen_boundary}
+
+Table~\ref{tab:appendix_qwen_boundary} summarizes the Qwen-family runs used as boundary diagnostics.
+The sparse reranker is triggered and accepted in these runs, but the aggregate CHAIR gains are weak or mixed.
+This supports the limitation that the current black-image prior and text guard are not uniformly reliable correction signals across newer decoding stacks.
+
+\begin{table}[h]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4.0pt}
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{lllcccccc}
+  \hline
+  Model & Method & Seed & $K$ & CHAIRs $\downarrow$ & CHAIRi $\downarrow$ & Recall $\uparrow$ & F1 $\uparrow$ & Trig./Eff. per img \\
+  \hline
+  Qwen3-VL-8B & Vanilla & -- & 0 & 53.4 & 9.95 & 77.3 & 75.4 & -- \\
+  Qwen3-VL-8B & SGR & 20260423 & 16 & 53.4 & 9.66 & 77.1 & 75.6 & 12.81/2.27 \\
+  Qwen3.5-VL-9B & Vanilla & -- & 0 & 46.4 & 14.14 & 72.6 & 74.8 & -- \\
+  Qwen3.5-VL-9B & SGR & 20260423 & 10 & 46.8 & 14.03 & 72.5 & 74.6 & 3.53/0.67 \\
+  Qwen3.5-VL-9B & SGR & 20260424 & 10 & 46.2 & 14.06 & 72.8 & 75.0 & 3.48/0.65 \\
+  \hline
+  \end{tabular}
+  }
+  \caption{
+  Qwen-family boundary diagnostics on 500 COCO images.
+  The runs show that successful triggering and accepted local changes do not guarantee robust aggregate improvement when the correction signal is not well aligned with the target model family.
+  }
+  \label{tab:appendix_qwen_boundary}
+\end{table}
+
+\clearpage
+\end{document}

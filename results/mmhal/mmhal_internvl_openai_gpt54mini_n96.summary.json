@@ -1,0 +1,45 @@
+{
+  "limit": 96,
+  "methods": {
+    "baseline": {
+      "num_records": 96,
+      "average_score": 3.4166666666666665,
+      "hallucination_rate": 0.3854166666666667,
+      "average_score_each_question_type": {
+        "adversarial": 3.8333333333333335,
+        "attribute": 4.083333333333333,
+        "comparison": 2.6666666666666665,
+        "counting": 3.9166666666666665,
+        "environment": 4.5,
+        "holistic": 2.25,
+        "other": 2.75,
+        "relation": 3.3333333333333335
+      }
+    },
+    "ours": {
+      "num_records": 96,
+      "average_score": 3.4479166666666665,
+      "hallucination_rate": 0.3541666666666667,
+      "average_score_each_question_type": {
+        "adversarial": 3.75,
+        "attribute": 3.6666666666666665,
+        "comparison": 2.9166666666666665,
+        "counting": 4.166666666666667,
+        "environment": 4.416666666666667,
+        "holistic": 1.9166666666666667,
+        "other": 3.8333333333333335,
+        "relation": 2.9166666666666665
+      }
+    }
+  },
+  "paired_delta_ours_minus_baseline": {
+    "num_pairs": 96,
+    "average_score_delta": 0.03125,
+    "hallucination_rate_delta": -0.03125
+  },
+  "judge_model": "gpt-5.4-mini",
+  "base_url": "<OPENAI_COMPATIBLE_BASE_URL>",
+  "baseline_response": "./mmhal_internvl_baseline_preds.json",
+  "ours_response": "./mmhal_internvl_threebranch_sparse_k8_global_seed20260423_preds.json",
+  "output": "mmhal_internvl_openai_gpt54mini_n96.review.jsonl"
+}

@@ -1,0 +1,1698 @@
+[
+    {
+        "question_type": "attribute",
+        "question_topic": "outdoor",
+        "image_id": "df62a56fdc1bb12b",
+        "image_src": "https://c4.staticflickr.com/8/7211/7206072054_c53d53b97d_o.jpg",
+        "image_content": [
+            "Fire hydrant"
+        ],
+        "question": "What color is the fire hydrant cap in the picture?",
+        "gt_answer": "The color of the fire hydrant cap in the image is yellow.",
+        "model_answer": "The fire hydrant cap in the picture is yellow.",
+        "llava_next_answer": "The fire hydrant cap in the picture is yellow.",
+        "llava_next_generated_len": 14
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "outdoor",
+        "image_id": "5b18b22f53ccc661",
+        "image_src": "https://farm2.staticflickr.com/5443/7413067568_06a8d1eb64_o.jpg",
+        "image_content": [
+            "Door",
+            "Building"
+        ],
+        "question": "Who is sitting on the bench?",
+        "gt_answer": "No one is sitting on the bench.",
+        "model_answer": "No one is sitting on the bench in the image. It appears to be an empty bench on a sidewalk.",
+        "llava_next_answer": "No one is sitting on the bench in the image. It appears to be an empty bench on a sidewalk.",
+        "llava_next_generated_len": 24
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "outdoor",
+        "image_id": "71d35c01e3b47a47",
+        "image_src": "https://farm8.staticflickr.com/137/383965780_db4815011c_o.jpg",
+        "image_content": [
+            "Vase",
+            "Houseplant",
+            "Stool",
+            "Coffee table",
+            "Flower"
+        ],
+        "question": "Which wooden stool has a vase with red flower on it?",
+        "gt_answer": "The left wooden stool has a vase with a red flower on it.",
+        "model_answer": "The wooden stool on the left has a vase with a red flower in it.",
+        "llava_next_answer": "The wooden stool on the left has a vase with a red flower in it.",
+        "llava_next_generated_len": 20
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "outdoor",
+        "image_id": "2c0e54cb2dcad01d",
+        "image_src": "https://c6.staticflickr.com/8/7618/16875241476_3b79e5d79b_o.jpg",
+        "image_content": [
+            "Traffic light",
+            "Building",
+            "House",
+            "Street light",
+            "Tree"
+        ],
+        "question": "How many traffic lights are there in the image?",
+        "gt_answer": "There are four traffic lights in the image.",
+        "model_answer": "There are two traffic lights in the image.",
+        "llava_next_answer": "There are two traffic lights in the image.",
+        "llava_next_generated_len": 11
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "outdoor",
+        "image_id": "03d45f0207d68aa2",
+        "image_src": "https://farm3.staticflickr.com/3640/3576366805_eea15333d5_o.jpg",
+        "image_content": [
+            "Traffic sign",
+            "Traffic light",
+            "Building"
+        ],
+        "question": "What colors are the traffic signs at the top, in the middle, and at the bottom?",
+        "gt_answer": "The traffic signs at the top and bottom are white, while the one in the center is blue.",
+        "model_answer": "The traffic signs at the top are white with black text. The middle sign is a blue and white street sign with an arrow pointing upwards. The bottom sign is a yellow diamond-shaped sign with black stripes and a red border.",
+        "llava_next_answer": "The traffic signs at the top are white with black text. The middle sign is a blue and white street sign with an arrow pointing upwards. The bottom sign is a yellow diamond-shaped sign with black stripes and a red border.",
+        "llava_next_generated_len": 50
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "outdoor",
+        "image_id": "2e1d92ec24b8f5f9",
+        "image_src": "https://c2.staticflickr.com/4/3452/3788392512_2a3f537219_o.jpg",
+        "image_content": [
+            "Wheel"
+        ],
+        "question": "How would you describe the weather in the image?",
+        "gt_answer": "The photo was captured during nighttime, with a dark sky overhead. It depicts a Ferris wheel surrounded by people and illuminated by the lights.",
+        "model_answer": "The image shows a night scene with a Ferris wheel illuminated by bright lights. The sky is dark, suggesting that it is nighttime. The weather appears to be clear, as there are no visible clouds or precipitation, and the lights from the Ferris wheel are bright and clear, indicating that there is no fog or haze. The atmosphere seems to be calm and dry, which is typical for a nighttime outdoor event or amusement park setting.",
+        "llava_next_answer": "The image shows a night scene with a Ferris wheel illuminated by bright lights. The sky is dark, suggesting that it is nighttime. The weather appears to be clear, as there are no visible clouds or precipitation, and the lights from the Ferris wheel are bright and clear, indicating that there is no fog or haze. The atmosphere seems to be calm and dry, which is typical for a nighttime outdoor event or amusement park setting.",
+        "llava_next_generated_len": 96
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "outdoor",
+        "image_id": "294aff231c7c290a",
+        "image_src": "https://c3.staticflickr.com/6/5558/14388226720_c54b67588a_o.jpg",
+        "image_content": [
+            "Building",
+            "Street light",
+            "Tree",
+            "Traffic sign",
+            "Window"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "The picture depicts a city street, recently dampened by rain, with a sidewalk lined by trees. There are several cars parked on the right, while others move along the road. A few pedestrians can be seen at a distance on the sidewalk, some of them holding umbrellas to protect themselves from the rain. The trees offer shade and lend a touch of nature to the urban setting. The scene exudes a sense of calm and serenity, emphasized by the glistening wet street and the nearly vacant walkway.",
+        "model_answer": "The image captures a serene scene of a rainy day in a city. The street, slick with rain, is lined with trees that stand tall on both sides, their leaves glistening with droplets of water. The sidewalk, wet from the rain, reflects the overcast sky above. \n\nOn the right side of the street, a row of buildings stands in the background, their windows reflecting the gray sky. A car is parked on the street, its shiny surface mirroring the surroundings. \n\nThe street is not deserted; a few people can be seen walking on the sidewalk, their figures slightly blurred by the rain. They are bundled up in jackets and hats, their heads down as they navigate the wet conditions. \n\nThe image is taken from a low angle, looking up the street towards the buildings. This perspective gives a sense of depth and perspective to the scene, making the street appear longer and more inviting. \n\nOverall, the image paints a picture of a quiet, rainy day in the city, with people going about their day despite the weather.",
+        "llava_next_answer": "The image captures a serene scene of a rainy day in a city. The street, slick with rain, is lined with trees that stand tall on both sides, their leaves glistening with droplets of water. The sidewalk, wet from the rain, reflects the overcast sky above. \n\nOn the right side of the street, a row of buildings stands in the background, their windows reflecting the gray sky. A car is parked on the street, its shiny surface mirroring the surroundings. \n\nThe street is not deserted; a few people can be seen walking on the sidewalk, their figures slightly blurred by the rain. They are bundled up in jackets and hats, their heads down as they navigate the wet conditions. \n\nThe image is taken from a low angle, looking up the street towards the buildings. This perspective gives a sense of depth and perspective to the scene, making the street appear longer and more inviting. \n\nOverall, the image paints a picture of a quiet, rainy day in the city, with people going about their day despite the weather.",
+        "llava_next_generated_len": 238
+    },
+    {
+        "question_type": "other",
+        "question_topic": "outdoor",
+        "image_id": "2462520ae7b86d0e",
+        "image_src": "https://c7.staticflickr.com/6/5506/11715451803_24861529ab_o.jpg",
+        "image_content": [
+            "Parking meter",
+            "Telephone"
+        ],
+        "question": "How much is it per hour to park at the parking meter?",
+        "gt_answer": "It is $4 per hour to park at the parking meter.",
+        "model_answer": "The parking meter in the image indicates that it costs $4.00 per hour to park.",
+        "llava_next_answer": "The parking meter in the image indicates that it costs $4.00 per hour to park.",
+        "llava_next_generated_len": 22
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "vehicle",
+        "image_id": "01e8509529aac2b8",
+        "image_src": "https://c1.staticflickr.com/1/463/20076975362_949c5a1cdb_o.jpg",
+        "image_content": [
+            "Car",
+            "Wheel",
+            "Land vehicle",
+            "Building"
+        ],
+        "question": "What color are the two cars from right to left in the image?",
+        "gt_answer": "The two cars from right to left in the image are black and blue.",
+        "model_answer": "The two cars in the image are blue and black.",
+        "llava_next_answer": "The two cars in the image are blue and black.",
+        "llava_next_generated_len": 13
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "vehicle",
+        "image_id": "1cdd5f88863aec33",
+        "image_src": "https://farm4.staticflickr.com/2503/3828840628_e625c9beb0_o.jpg",
+        "image_content": [
+            "Tire",
+            "Motorcycle",
+            "Wheel"
+        ],
+        "question": "What is the gender of the person riding the motorcycle in the image?",
+        "gt_answer": "No one is riding the motorcycle by the roadside in the image.",
+        "model_answer": "The image shows a motorcycle, but there is no person riding it. It is parked on the side of the road.",
+        "llava_next_answer": "The image shows a motorcycle, but there is no person riding it. It is parked on the side of the road.",
+        "llava_next_generated_len": 27
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "vehicle",
+        "image_id": "50ba2afa85a784cb",
+        "image_src": "https://c4.staticflickr.com/2/1196/1424845359_c4945d38f1_o.jpg",
+        "image_content": [
+            "Wheel",
+            "Building",
+            "Truck",
+            "Person",
+            "Auto part"
+        ],
+        "question": "In the image, which truck (left or right) has its door open?",
+        "gt_answer": "The fire truck, which is on the left side of the image, has its door open.",
+        "model_answer": "The truck on the left has its door open.",
+        "llava_next_answer": "The truck on the left has its door open.",
+        "llava_next_generated_len": 12
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "vehicle",
+        "image_id": "aec20da322ac2ace",
+        "image_src": "https://c7.staticflickr.com/1/100/315943393_e2c5dc5bd7_o.jpg",
+        "image_content": [
+            "Tree",
+            "Plant",
+            "Person",
+            "Land vehicle",
+            "Bicycle helmet",
+            "Sports equipment",
+            "Bicycle",
+            "Vehicle",
+            "Mammal",
+            "Bicycle wheel"
+        ],
+        "question": "How many bicycles are there in the image?",
+        "gt_answer": "In the image, there are four bicycles: two at the front, one in the middle, and one in the distance.",
+        "model_answer": "There are three bicycles in the image.",
+        "llava_next_answer": "There are three bicycles in the image.",
+        "llava_next_generated_len": 11
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "vehicle",
+        "image_id": "590b56abc568010b",
+        "image_src": "https://c4.staticflickr.com/5/4086/5014730631_9c2701e063_o.jpg",
+        "image_content": [
+            "Person",
+            "Mammal",
+            "Boat"
+        ],
+        "question": "How is the yellow boat positioned in relation to the white yacht in the image?",
+        "gt_answer": "The yellow boat is positioned in front of the white yacht in the image.",
+        "model_answer": "The yellow boat is positioned in front of the white yacht. The yellow boat is closer to the foreground and appears to be moving towards the camera, while the white yacht is further in the background, slightly to the left. The yellow boat is also closer to the viewer, suggesting it is closer to the camera's perspective.",
+        "llava_next_answer": "The yellow boat is positioned in front of the white yacht. The yellow boat is closer to the foreground and appears to be moving towards the camera, while the white yacht is further in the background, slightly to the left. The yellow boat is also closer to the viewer, suggesting it is closer to the camera's perspective.",
+        "llava_next_generated_len": 71
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "vehicle",
+        "image_id": "9baac3ede8933b48",
+        "image_src": "https://c1.staticflickr.com/4/3386/3430256574_ab887d1df5_o.jpg",
+        "image_content": [
+            "Train",
+            "Skyscraper",
+            "Car",
+            "Land vehicle",
+            "Plant",
+            "Vehicle",
+            "Wheel",
+            "Tree"
+        ],
+        "question": "What is the weather like in the image?",
+        "gt_answer": "In the image, the weather appears to be either sunny or cloudy.",
+        "model_answer": "The weather in the image appears to be overcast with a cloudy sky, suggesting it might be a cool or cloudy day. There are no visible signs of rain or snow, so it's not currently raining or snowing. The visibility seems to be good, with no immediate signs of fog or heavy precipitation.",
+        "llava_next_answer": "The weather in the image appears to be overcast with a cloudy sky, suggesting it might be a cool or cloudy day. There are no visible signs of rain or snow, so it's not currently raining or snowing. The visibility seems to be good, with no immediate signs of fog or heavy precipitation.",
+        "llava_next_generated_len": 69
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "vehicle",
+        "image_id": "a822376f2d79b90f",
+        "image_src": "https://c8.staticflickr.com/5/4033/4523458956_0b78c6b298_o.jpg",
+        "image_content": [
+            "Wheel",
+            "Bus",
+            "Person",
+            "Auto part",
+            "Land vehicle"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "The picture presents a yellow school bus stationed on an urban roadway, alongside a bicyclist. Positioned outside a tattoo establishment, the bus offers a unique urban backdrop. The road is notably calm, with the absence of other vehicles and passersby. The cyclist, equipped with a backpack and helmet, seems to be a student or a regular commuter. Given the tattoo parlor and the school bus, it's plausible that this area is a vibrant commercial or recreational hub frequented by shoppers, students, or those seeking leisure.",
+        "model_answer": "In the heart of a bustling city, a vibrant yellow school bus, adorned with a red stop sign on its side, is parked on the side of the street. The bus is not just any ordinary bus, it's a mobile advertisement for a tattoo parlor named \"Rising Dragon Tattoos\". The parlor's logo, a striking red dragon, is prominently displayed on the side of the bus, along with the words \"Rising Dragon Tattoos\" and \"Abaco Carriers\".\n\nA man, casually dressed in a blue shirt and a backpack, is standing on the sidewalk next to the bus. He seems to be in the middle of a conversation on his phone, perhaps discussing the day's events or making plans. His position next to the bus suggests he might be the driver or a passenger waiting to board.\n\nThe backdrop of this scene is a typical city street lined with buildings. A sign for a pizza place can be seen in the distance, adding to the urban atmosphere. The image captures a moment in time, painting a picture of everyday life in the city.",
+        "llava_next_answer": "In the heart of a bustling city, a vibrant yellow school bus, adorned with a red stop sign on its side, is parked on the side of the street. The bus is not just any ordinary bus, it's a mobile advertisement for a tattoo parlor named \"Rising Dragon Tattoos\". The parlor's logo, a striking red dragon, is prominently displayed on the side of the bus, along with the words \"Rising Dragon Tattoos\" and \"Abaco Carriers\".\n\nA man, casually dressed in a blue shirt and a backpack, is standing on the sidewalk next to the bus. He seems to be in the middle of a conversation on his phone, perhaps discussing the day's events or making plans. His position next to the bus suggests he might be the driver or a passenger waiting to board.\n\nThe backdrop of this scene is a typical city street lined with buildings. A sign for a pizza place can be seen in the distance, adding to the urban atmosphere. The image captures a moment in time, painting a picture of everyday life in the city.",
+        "llava_next_generated_len": 237
+    },
+    {
+        "question_type": "other",
+        "question_topic": "vehicle",
+        "image_id": "a7157a32c782e319",
+        "image_src": "https://c2.staticflickr.com/8/7167/6555470659_4c69a30b73_o.jpg",
+        "image_content": [
+            "Person",
+            "Fixed-wing aircraft"
+        ],
+        "question": "Which company owns the airplane displayed in the back of the image?",
+        "gt_answer": "The airplane in the background of the image is owned by Virgin Airlines.",
+        "model_answer": "The airplane in the back of the image belongs to United Airlines, as indicated by the logo on the tail.",
+        "llava_next_answer": "The airplane in the back of the image belongs to United Airlines, as indicated by the logo on the tail.",
+        "llava_next_generated_len": 25
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "person",
+        "image_id": "d6485beb5b69ea53",
+        "image_src": "https://farm4.staticflickr.com/3839/14901778703_09a206232c_o.jpg",
+        "image_content": [
+            "Plant",
+            "Tree",
+            "Man",
+            "Sports equipment",
+            "Human arm"
+        ],
+        "question": "What are the colors of the shirts worn by the three men from left to right in the image?",
+        "gt_answer": "The three men from left to right in the image are wearing green, blue, and red shirts.",
+        "model_answer": "The three men in the image are wearing shirts with the following colors from left to right:\n\n1. The man on the left is wearing a green shirt.\n2. The man in the middle is wearing a blue shirt.\n3. The man on the right is wearing a red shirt.",
+        "llava_next_answer": "The three men in the image are wearing shirts with the following colors from left to right:\n\n1. The man on the left is wearing a green shirt.\n2. The man in the middle is wearing a blue shirt.\n3. The man on the right is wearing a red shirt.",
+        "llava_next_generated_len": 64
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "person",
+        "image_id": "350f86d5d3c2d9c3",
+        "image_src": "https://farm4.staticflickr.com/41/83372724_a17cceb078_o.jpg",
+        "image_content": [
+            "Human head",
+            "Boy",
+            "Human ear",
+            "Human eye",
+            "Human mouth",
+            "Human face",
+            "Man",
+            "Human hair",
+            "Human body",
+            "Mammal",
+            "Human nose",
+            "Clothing"
+        ],
+        "question": "Which color are the glasses that the man in the image is wearing?",
+        "gt_answer": "The man is not wearing glasses.",
+        "model_answer": "The man in the image is not wearing glasses. He has a mustache drawn on his face with a black substance, possibly makeup or paint.",
+        "llava_next_answer": "The man in the image is not wearing glasses. He has a mustache drawn on his face with a black substance, possibly makeup or paint.",
+        "llava_next_generated_len": 31
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "person",
+        "image_id": "1e4224b56a0c9ef0",
+        "image_src": "https://farm1.staticflickr.com/3815/9340455006_25a885f7ef_o.jpg",
+        "image_content": [
+            "Clothing",
+            "Human body",
+            "Person",
+            "Man",
+            "Mammal"
+        ],
+        "question": "Who in the picture is wearing trousers?",
+        "gt_answer": "The woman in the image wears the pants.",
+        "model_answer": "In the picture, the person on the right is wearing pants.",
+        "llava_next_answer": "In the picture, the person on the right is wearing pants.",
+        "llava_next_generated_len": 15
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "person",
+        "image_id": "c8028c1f637cee75",
+        "image_src": "https://farm6.staticflickr.com/7307/16189396430_4dce91a9d7_o.jpg",
+        "image_content": [
+            "Girl",
+            "Human head",
+            "Human hair",
+            "Mammal",
+            "Dog",
+            "Person",
+            "Human face"
+        ],
+        "question": "How many people are there in the image?",
+        "gt_answer": "There are four people in the image.",
+        "model_answer": "There are four people in the image: a man, a woman, and two children.",
+        "llava_next_answer": "There are four people in the image: a man, a woman, and two children.",
+        "llava_next_generated_len": 20
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "person",
+        "image_id": "4ad9295d442500a7",
+        "image_src": "https://farm8.staticflickr.com/3063/2500640631_a4c9abd52c_o.jpg",
+        "image_content": [
+            "Mammal",
+            "Human nose",
+            "Human mouth",
+            "Human face",
+            "Clothing",
+            "Poster",
+            "Person",
+            "Human hair"
+        ],
+        "question": "Where is the girl positioned among the three people in the image?",
+        "gt_answer": "The girl stands on the right among the three individuals in the image.",
+        "model_answer": "In the image, the girl is positioned to the right of the man in the blue and red suit, who is standing in the center. The girl is standing slightly behind the man in the suit, and she is to the right of the older woman who is standing to the left of the man in the suit.",
+        "llava_next_answer": "In the image, the girl is positioned to the right of the man in the blue and red suit, who is standing in the center. The girl is standing slightly behind the man in the suit, and she is to the right of the older woman who is standing to the left of the man in the suit.",
+        "llava_next_generated_len": 65
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "person",
+        "image_id": "4701e0acb21f2e68",
+        "image_src": "https://c1.staticflickr.com/3/2766/4264709756_1eb0e9ab45_o.jpg",
+        "image_content": [
+            "Human face",
+            "Fashion accessory",
+            "Human arm",
+            "Human hair",
+            "Human head",
+            "Human leg",
+            "Man",
+            "Human mouth",
+            "Sunglasses",
+            "Human body",
+            "Swimwear",
+            "Boy",
+            "Goggles"
+        ],
+        "question": "Is the man in the picture indoors or outdoors?",
+        "gt_answer": "The man in the photo is outside, sitting on a boat with several oxygen tanks around him.",
+        "model_answer": "The man in the picture appears to be outdoors, as indicated by the natural light and the presence of what looks like a body of water in the background.",
+        "llava_next_answer": "The man in the picture appears to be outdoors, as indicated by the natural light and the presence of what looks like a body of water in the background.",
+        "llava_next_generated_len": 34
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "person",
+        "image_id": "856c000622d66bd9",
+        "image_src": "https://c2.staticflickr.com/4/3501/4068897399_a729022693_o.jpg",
+        "image_content": [
+            "Window",
+            "Clothing",
+            "Person",
+            "Building"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "The image captures a bustling street lined with various shops and an adjoining sidewalk. Several pedestrians are present, with two individuals notably passing a store with a green sign saying \"Hawkin's Bazaar\". At this store's entrance, a man stands, overseeing a spacious window display that houses diverse items, highlighted by a red and white sign. Interestingly, no trees or parked cars are present in the street. The mood is energetic, showcasing individuals engaged in their daily routines and shopping pursuits.",
+        "model_answer": "The image captures a lively scene on a street corner in London, England. Dominating the frame is a store named \"Hawkin's Bazaar\", a purveyor of \"Hawkin's Bizarre\" items. The storefront is adorned with a green awning, under which a large window displays an array of items for sale. The window is decorated with a festive touch, featuring a Christmas tree and snowflakes, hinting at the holiday season.\n\nThe store is nestled on a street corner, with a red and white sign on the left side of the image. The sidewalk in front of the store is bustling with activity, with people walking by, adding a dynamic element to the scene.\n\nOn the right side of the image, a black awning stands out against the backdrop of the store. A red and white sign on this awning reads \"Mid Street Addiction\", suggesting another store or business in the vicinity.\n\nThe image beautifully encapsulates a typical day in London, with its mix of shops, pedestrians, and vibrant street life.",
+        "llava_next_answer": "The image captures a lively scene on a street corner in London, England. Dominating the frame is a store named \"Hawkin's Bazaar\", a purveyor of \"Hawkin's Bizarre\" items. The storefront is adorned with a green awning, under which a large window displays an array of items for sale. The window is decorated with a festive touch, featuring a Christmas tree and snowflakes, hinting at the holiday season.\n\nThe store is nestled on a street corner, with a red and white sign on the left side of the image. The sidewalk in front of the store is bustling with activity, with people walking by, adding a dynamic element to the scene.\n\nOn the right side of the image, a black awning stands out against the backdrop of the store. A red and white sign on this awning reads \"Mid Street Addiction\", suggesting another store or business in the vicinity.\n\nThe image beautifully encapsulates a typical day in London, with its mix of shops, pedestrians, and vibrant street life.",
+        "llava_next_generated_len": 241
+    },
+    {
+        "question_type": "other",
+        "question_topic": "person",
+        "image_id": "c3c43c3a0b95b8b7",
+        "image_src": "https://farm8.staticflickr.com/7445/8716117944_a272643aef_o.jpg",
+        "image_content": [
+            "Person",
+            "Clothing",
+            "Sports equipment",
+            "Mammal",
+            "Footwear"
+        ],
+        "question": "What number is the fastest girl wearing in the picture?",
+        "gt_answer": "The fastest girl in the picture is wearing number 1097.",
+        "model_answer": "The girl wearing the number 1097 in the picture appears to be the fastest runner in the race.",
+        "llava_next_answer": "The girl wearing the number 1097 in the picture appears to be the fastest runner in the race.",
+        "llava_next_generated_len": 25
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "animal",
+        "image_id": "2c6cfffcec6c6463",
+        "image_src": "https://farm4.staticflickr.com/8268/10172500456_1f40b6bd38_o.jpg",
+        "image_content": [
+            "Dog"
+        ],
+        "question": "What are the colors of the dogs from right to left?",
+        "gt_answer": "The colors of the two dogs from right to left are brown and black.",
+        "model_answer": "The dog on the right is brown, and the dog on the left is black.",
+        "llava_next_answer": "The dog on the right is brown, and the dog on the left is black.",
+        "llava_next_generated_len": 19
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "animal",
+        "image_id": "0c9eb1868c2d1228",
+        "image_src": "https://c1.staticflickr.com/3/2935/13789278495_8545acd44c_o.jpg",
+        "image_content": [
+            "Animal",
+            "Bird"
+        ],
+        "question": "What is a vicuna standing in the sand looking at?",
+        "gt_answer": "There is no vicuna in the image.",
+        "model_answer": "The image you've provided appears to be a painting or illustration of a toucan rather than a photograph of a vicuna. Vicunas are not typically found in sandy environments; they are native to the Andes mountains in South America and are known for their woolly coats. Toucans, on the other hand, are large, colorful birds found in the rainforests of South America, and they are known for their large, colorful bills. The bird in the image has a large, colorful beak and is perched on a branch with green leaves, which is more consistent with a toucan's natural habitat.",
+        "llava_next_answer": "The image you've provided appears to be a painting or illustration of a toucan rather than a photograph of a vicuna. Vicunas are not typically found in sandy environments; they are native to the Andes mountains in South America and are known for their woolly coats. Toucans, on the other hand, are large, colorful birds found in the rainforests of South America, and they are known for their large, colorful bills. The bird in the image has a large, colorful beak and is perched on a branch with green leaves, which is more consistent with a toucan's natural habitat.",
+        "llava_next_generated_len": 137
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "animal",
+        "image_id": "3f244d0cd047e3b7",
+        "image_src": "https://farm8.staticflickr.com/195/502006488_2d907443d8_o.jpg",
+        "image_content": [
+            "Mammal",
+            "Cat"
+        ],
+        "question": "Which cat (left, right or middle) in the image opens its mouth?",
+        "gt_answer": "The cat on the right side of the image opens its mouth.",
+        "model_answer": "The cat on the right in the image has its mouth open.",
+        "llava_next_answer": "The cat on the right in the image has its mouth open.",
+        "llava_next_generated_len": 15
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "animal",
+        "image_id": "7283e9f8f21661ea",
+        "image_src": "https://c3.staticflickr.com/6/5223/5775946611_ef789718ed_o.jpg",
+        "image_content": [
+            "Zebra",
+            "Plant"
+        ],
+        "question": "How many zebras are there in the image?",
+        "gt_answer": "There are six zebras in the image.",
+        "model_answer": "There are five zebras in the image.",
+        "llava_next_answer": "There are five zebras in the image.",
+        "llava_next_generated_len": 12
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "animal",
+        "image_id": "ebbc5c3c4b35bedd",
+        "image_src": "https://c6.staticflickr.com/2/1333/965561501_0b7e9aed90_o.jpg",
+        "image_content": [
+            "Plant",
+            "Sheep",
+            "Tree"
+        ],
+        "question": "Which sheep is in front of the other sheep?",
+        "gt_answer": "The sheep in front of the other sheep is a white sheep.",
+        "model_answer": "In the image, there are several sheep in the foreground and others in the background. The sheep in the foreground are closer to the camera, while the ones in the background are further away. The sheep in the foreground are more detailed and clearer, while the ones in the background are smaller and less distinct due to the perspective. The sheep in the foreground are the ones that are in front of the others.",
+        "llava_next_answer": "In the image, there are several sheep in the foreground and others in the background. The sheep in the foreground are closer to the camera, while the ones in the background are further away. The sheep in the foreground are more detailed and clearer, while the ones in the background are smaller and less distinct due to the perspective. The sheep in the foreground are the ones that are in front of the others.",
+        "llava_next_generated_len": 88
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "animal",
+        "image_id": "952641c85b9f09fe",
+        "image_src": "https://c7.staticflickr.com/4/3210/2938079244_9e814f0e7a_o.jpg",
+        "image_content": [
+            "Footwear",
+            "Sports equipment",
+            "Clothing",
+            "Person",
+            "Helmet",
+            "Animal",
+            "Man",
+            "Human leg",
+            "Human body"
+        ],
+        "question": "How was the weather when this picture was captured?",
+        "gt_answer": "When this photo was taken, it was dark at night. This photo shows a horse race at night.",
+        "model_answer": "The image shows a nighttime scene with a horse race in progress. The lighting suggests that it is dark, and the artificial lights from the stadium and the horses' headlamps are illuminating the track. The weather appears to be clear, as there are no visible signs of rain or snow, and the track is not muddy, which would indicate recent rainfall. The visibility is good, allowing for clear observation of the horses and jockeys.",
+        "llava_next_answer": "The image shows a nighttime scene with a horse race in progress. The lighting suggests that it is dark, and the artificial lights from the stadium and the horses' headlamps are illuminating the track. The weather appears to be clear, as there are no visible signs of rain or snow, and the track is not muddy, which would indicate recent rainfall. The visibility is good, allowing for clear observation of the horses and jockeys.",
+        "llava_next_generated_len": 95
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "animal",
+        "image_id": "7b6eed2a50ffd046",
+        "image_src": "https://farm7.staticflickr.com/151/363931462_37f0088f48_o.jpg",
+        "image_content": [
+            "Zebra",
+            "Tree",
+            "Mammal",
+            "Giraffe",
+            "Plant"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "The image depicts three zebras and four giraffes on a sandy terrain, with trees in the background and a stone structure to the right. Surrounding the scene is fencing, suggesting a controlled environment like a zoo or nature reserve.",
+        "model_answer": "In the heart of a zoo enclosure, a group of four zebras and two giraffes are captured in a moment of tranquility. The zebras, with their distinctive black and white stripes, are standing on a dirt ground, their bodies angled towards the camera. One of them is facing the camera, while the other three are turned away, their attention seemingly caught by something off-frame.\n\nThe giraffes, with their long necks and legs, are standing near a large rock formation. One of them is facing the camera, its head held high, while the other is turned away, its gaze directed towards the rock formation.\n\nThe enclosure is surrounded by a wooden fence, providing a safe boundary for these magnificent creatures. In the background, trees can be seen, adding a touch of nature to the scene. The image captures a peaceful moment in the lives of these animals, offering a glimpse into their world within the zoo.",
+        "llava_next_answer": "In the heart of a zoo enclosure, a group of four zebras and two giraffes are captured in a moment of tranquility. The zebras, with their distinctive black and white stripes, are standing on a dirt ground, their bodies angled towards the camera. One of them is facing the camera, while the other three are turned away, their attention seemingly caught by something off-frame.\n\nThe giraffes, with their long necks and legs, are standing near a large rock formation. One of them is facing the camera, its head held high, while the other is turned away, its gaze directed towards the rock formation.\n\nThe enclosure is surrounded by a wooden fence, providing a safe boundary for these magnificent creatures. In the background, trees can be seen, adding a touch of nature to the scene. The image captures a peaceful moment in the lives of these animals, offering a glimpse into their world within the zoo.",
+        "llava_next_generated_len": 204
+    },
+    {
+        "question_type": "other",
+        "question_topic": "animal",
+        "image_id": "996983a34279806d",
+        "image_src": "https://c6.staticflickr.com/5/4079/4883309412_53b0b853d5_o.jpg",
+        "image_content": [
+            "Rhinoceros",
+            "Mammal"
+        ],
+        "question": "Out of the four animals, how many giraffes are there in the image?",
+        "gt_answer": "In the image, there are two rhinos, a giraffe, and a wild horse.",
+        "model_answer": "There are two giraffes in the image.",
+        "llava_next_answer": "There are two giraffes in the image.",
+        "llava_next_generated_len": 12
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "food",
+        "image_id": "f1af0ed7187eab00",
+        "image_src": "https://farm1.staticflickr.com/3758/12521323285_97a94c8cbc_o.jpg",
+        "image_content": [
+            "Fruit"
+        ],
+        "question": "Is the kiwi in the front fresh or dried?",
+        "gt_answer": "The kiwi in the front is dried. There are four dried pieces of kiwi in the front, and three fresh ones in the back.",
+        "model_answer": "The kiwi in the front appears to be dried. You can tell because it has a shriveled, wrinkled texture and a darker color compared to the fresh kiwi slices in the background. Fresh kiwi slices are usually smoother and have a brighter green color.",
+        "llava_next_answer": "The kiwi in the front appears to be dried. You can tell because it has a shriveled, wrinkled texture and a darker color compared to the fresh kiwi slices in the background. Fresh kiwi slices are usually smoother and have a brighter green color.",
+        "llava_next_generated_len": 63
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "food",
+        "image_id": "4ca36920f24e0fbd",
+        "image_src": "https://c6.staticflickr.com/9/8834/18414801440_47f21894da_o.jpg",
+        "image_content": [
+            "Dessert",
+            "Bread"
+        ],
+        "question": "Is the jam on the bread made of strawberry?",
+        "gt_answer": "In fact, this photo only shows a cut and toasted bread slice. There is no jam on it.",
+        "model_answer": "The image shows a slice of bread with a golden-brown crust, which appears to be toasted. However, there is no visible jam on the bread in the image. The bread looks like it could be a type of toast or a slice of French toast, which is often served without jam. If there is jam on the bread, it is not visible in this particular angle and lighting of the photo.",
+        "llava_next_answer": "The image shows a slice of bread with a golden-brown crust, which appears to be toasted. However, there is no visible jam on the bread in the image. The bread looks like it could be a type of toast or a slice of French toast, which is often served without jam. If there is jam on the bread, it is not visible in this particular angle and lighting of the photo.",
+        "llava_next_generated_len": 86
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "food",
+        "image_id": "51389a33f0919915",
+        "image_src": "https://farm6.staticflickr.com/5209/5322693484_868ba39c68_o.jpg",
+        "image_content": [
+            "Vegetable",
+            "Tomato",
+            "Food"
+        ],
+        "question": "Compare the tomatoes in the photo.",
+        "gt_answer": "There are three tomatoes from the same vine in the photo. The tomato on the left side is red and ripe, while the two tomatoes in the middle and on the right side are yellow and unripe.",
+        "model_answer": "In the photo, there are three tomatoes hanging from a vine. The tomato on the left is still green and appears to be unripe, as indicated by its color. The middle tomato is a mix of green and yellow, suggesting it is in the process of ripening. The tomato on the right is fully ripe, as indicated by its bright yellow color. The ripe tomato is the largest of the three and is the most advanced in terms of ripeness. The green tomato is the smallest and is the least ripe. The yellow tomato is in the middle in terms of size and ripeness.",
+        "llava_next_answer": "In the photo, there are three tomatoes hanging from a vine. The tomato on the left is still green and appears to be unripe, as indicated by its color. The middle tomato is a mix of green and yellow, suggesting it is in the process of ripening. The tomato on the right is fully ripe, as indicated by its bright yellow color. The ripe tomato is the largest of the three and is the most advanced in terms of ripeness. The green tomato is the smallest and is the least ripe. The yellow tomato is in the middle in terms of size and ripeness.",
+        "llava_next_generated_len": 135
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "food",
+        "image_id": "071af503f95aee59",
+        "image_src": "https://c2.staticflickr.com/3/2374/2519330533_597840098a_o.jpg",
+        "image_content": [
+            "Oyster",
+            "Food",
+            "Invertebrate",
+            "Animal",
+            "Seafood"
+        ],
+        "question": "How many oysters can you see in the photo?",
+        "gt_answer": "There are five oysters visible in the photo.",
+        "model_answer": "There are five oysters visible in the photo.",
+        "llava_next_answer": "There are five oysters visible in the photo.",
+        "llava_next_generated_len": 13
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "food",
+        "image_id": "2bbc6adf1cff3456",
+        "image_src": "https://farm7.staticflickr.com/5186/5757505875_8578d2fc37_o.jpg",
+        "image_content": [
+            "Dessert",
+            "Baked goods",
+            "Broccoli",
+            "Fast food",
+            "Cookie"
+        ],
+        "question": "Is the bowl with broccoli on top of the bowl with meatballs?",
+        "gt_answer": "No, the bowl with broccoli is next to the bowl of meatballs.",
+        "model_answer": "Yes, the bowl with broccoli is placed on top of the bowl with meatballs.",
+        "llava_next_answer": "Yes, the bowl with broccoli is placed on top of the bowl with meatballs.",
+        "llava_next_generated_len": 22
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "food",
+        "image_id": "af8fe8f491807b09",
+        "image_src": "https://c2.staticflickr.com/9/8726/16685252757_e1c32c0e1f_o.jpg",
+        "image_content": [
+            "Snack",
+            "Clothing",
+            "Mammal",
+            "Person",
+            "Human body",
+            "Human hand",
+            "Fast food",
+            "Food",
+            "Man",
+            "Human arm",
+            "Woman",
+            "Seafood"
+        ],
+        "question": "Is this photo taken in a restaurant, a kitchen, or anywhere else?",
+        "gt_answer": "This photo is taken outdoors, likely on a beach, where a man is cooking on a grill.",
+        "model_answer": "The photo appears to be taken in an outdoor setting, possibly at a street food stall or a barbecue event. There are people gathered around a grill with food being cooked, and the atmosphere suggests a casual, social event rather than a formal restaurant or kitchen setting. The presence of a large grill with food on it and the informal attire of the people suggest that this is likely a social gathering or a public event where food is being prepared and served.",
+        "llava_next_answer": "The photo appears to be taken in an outdoor setting, possibly at a street food stall or a barbecue event. There are people gathered around a grill with food being cooked, and the atmosphere suggests a casual, social event rather than a formal restaurant or kitchen setting. The presence of a large grill with food on it and the informal attire of the people suggest that this is likely a social gathering or a public event where food is being prepared and served.",
+        "llava_next_generated_len": 98
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "food",
+        "image_id": "3e018215175254e6",
+        "image_src": "https://farm7.staticflickr.com/1420/4722330374_2425fd36eb_o.jpg",
+        "image_content": [
+            "Man",
+            "Food",
+            "Clothing",
+            "Vegetable"
+        ],
+        "question": "Describe the activities in this image.",
+        "gt_answer": "In this image we can see a man and two young girls preparing food. The man seems to be a chef with a suit but no hat. The two girls seem to be interns, wearing aprons with a \"BRITANNIA HOTEL\" logo. The man seems to be guiding the girls to prepare the food. In front of them, there is a table with food on it. From left to right, there is a metal bowl of vegetables on a red cutting board, and two plates of meat, possibly saussages.",
+        "model_answer": "In the image, there are three individuals in a kitchen setting, preparing food. The person on the left is wearing a white apron with the text \"BRITANNIA HOTEL\" and is holding a green vegetable, possibly a green bean, over a silver bowl. The person in the middle is a young girl with blonde hair, wearing a black apron with the same \"BRITANNIA HOTEL\" text, and she is looking down at the bowl with the green vegetable. The person on the right is an adult male with dark hair, wearing a white chef's coat with the same \"BRITANNIA HOTEL\" logo, and he is observing the girl as she prepares the food.\n\nThe kitchen counter has a red surface, and there are other ingredients and utensils visible, including a plate with sliced meat and a knife. The environment suggests a professional or commercial kitchen, given the uniforms and the presence of the \"BRITANNIA HOTEL\" branding. The individuals appear to be engaged in a cooking activity, possibly as part of a culinary training or team-building exercise.",
+        "llava_next_answer": "In the image, there are three individuals in a kitchen setting, preparing food. The person on the left is wearing a white apron with the text \"BRITANNIA HOTEL\" and is holding a green vegetable, possibly a green bean, over a silver bowl. The person in the middle is a young girl with blonde hair, wearing a black apron with the same \"BRITANNIA HOTEL\" text, and she is looking down at the bowl with the green vegetable. The person on the right is an adult male with dark hair, wearing a white chef's coat with the same \"BRITANNIA HOTEL\" logo, and he is observing the girl as she prepares the food.\n\nThe kitchen counter has a red surface, and there are other ingredients and utensils visible, including a plate with sliced meat and a knife. The environment suggests a professional or commercial kitchen, given the uniforms and the presence of the \"BRITANNIA HOTEL\" branding. The individuals appear to be engaged in a cooking activity, possibly as part of a culinary training or team-building exercise.",
+        "llava_next_generated_len": 246
+    },
+    {
+        "question_type": "other",
+        "question_topic": "food",
+        "image_id": "0151d884c5bf5c8c",
+        "image_src": "https://c5.staticflickr.com/7/6064/6097499605_d06c51eed9_o.jpg",
+        "image_content": [
+            "Fast food",
+            "Clothing",
+            "Snack",
+            "Person",
+            "Food"
+        ],
+        "question": "From this photo, how much does each jerk chicken dumpling cost?",
+        "gt_answer": "Each jerk chicken dumpling costs 5 pounds.",
+        "model_answer": "The photo shows a sign that says \"Jerk Chicken Dumplings £2.00,\" indicating that each dumpling costs £2.00.",
+        "llava_next_answer": "The photo shows a sign that says \"Jerk Chicken Dumplings £2.00,\" indicating that each dumpling costs £2.00.",
+        "llava_next_generated_len": 36
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "sports",
+        "image_id": "375e84d28f0d3cbc",
+        "image_src": "https://c5.staticflickr.com/8/7141/6705513453_b025140503_o.jpg",
+        "image_content": [
+            "Sports equipment",
+            "Parachute"
+        ],
+        "question": "What are the colors of the parachutes in the sky?",
+        "gt_answer": "There are three parachutes in the sky. The one on the left is light green. The one on the top right is orange. The one on the bottom right is blue.",
+        "model_answer": "The parachutes in the sky are colored orange, blue, and green.",
+        "llava_next_answer": "The parachutes in the sky are colored orange, blue, and green.",
+        "llava_next_generated_len": 18
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "sports",
+        "image_id": "bb59841e50eff62e",
+        "image_src": "https://c7.staticflickr.com/9/8387/8506072922_e7f6c6ca49_o.jpg",
+        "image_content": [
+            "Tennis racket",
+            "Ball (Object)"
+        ],
+        "question": "Describe the person playing tennis in this photo.",
+        "gt_answer": "No, there is only a tennis racket and a ball on the ground. No one is playing tennis in this photo.",
+        "model_answer": "The image shows a tennis racket with a blue and black handle and a blue and white frame, resting on a green tennis court surface. There is a yellow tennis ball placed on the strings of the racket. The court has white boundary lines, and the surface appears to be well-maintained with a slight texture. The racket is positioned with the head pointing towards the net, and the handle is on the ground, indicating that the player may have taken a break or is preparing to serve. The image does not provide any information about the player's identity or their actions, so no details about the person playing tennis can be confidently inferred from the photo.",
+        "llava_next_answer": "The image shows a tennis racket with a blue and black handle and a blue and white frame, resting on a green tennis court surface. There is a yellow tennis ball placed on the strings of the racket. The court has white boundary lines, and the surface appears to be well-maintained with a slight texture. The racket is positioned with the head pointing towards the net, and the handle is on the ground, indicating that the player may have taken a break or is preparing to serve. The image does not provide any information about the player's identity or their actions, so no details about the person playing tennis can be confidently inferred from the photo.",
+        "llava_next_generated_len": 139
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "sports",
+        "image_id": "e304afc041e5c159",
+        "image_src": "https://c2.staticflickr.com/5/4126/4958794254_c3f9677682_o.jpg",
+        "image_content": [
+            "Surfboard"
+        ],
+        "question": "Compare the two surfboards in the photo.",
+        "gt_answer": "The two surfboards have different looks. The surfboard on the top has a white and wood color with a simple design. The other one on the bottom is red, with a more complex white and black pattern in the front.",
+        "model_answer": "The image shows two surfboards placed on a grassy area. The surfboard on the left is a longboard, which is typically used for cruising and catching smaller waves. It has a pointed nose and a rounded tail, with a design that suggests it's a traditional longboard, possibly for beginners or for those who enjoy a more relaxed surfing experience.\n\nThe surfboard on the right appears to be a shortboard, which is designed for more aggressive maneuvers and is used by advanced surfers to perform tricks and ride larger waves. It has a more pointed nose and a squash tail, which is a tail shape that allows for quick turns and maneuverability.\n\nThe design on the bottom of the shortboard is quite unique, featuring a pattern that looks like a combination of geometric shapes and possibly some sort of artwork or branding. The longboard has a more simple design with a logo on the bottom, which is common for surfboards to indicate the brand or model.\n\nBoth surfboards are placed on a grassy area, which is not a typical place to store surfboards, as they are usually stored in a garage or a rack when not in use. The presence of the grass suggests that the photo might have been taken in a casual or informal setting, possibly during a surfing session or a break from surfing.",
+        "llava_next_answer": "The image shows two surfboards placed on a grassy area. The surfboard on the left is a longboard, which is typically used for cruising and catching smaller waves. It has a pointed nose and a rounded tail, with a design that suggests it's a traditional longboard, possibly for beginners or for those who enjoy a more relaxed surfing experience.\n\nThe surfboard on the right appears to be a shortboard, which is designed for more aggressive maneuvers and is used by advanced surfers to perform tricks and ride larger waves. It has a more pointed nose and a squash tail, which is a tail shape that allows for quick turns and maneuverability.\n\nThe design on the bottom of the shortboard is quite unique, featuring a pattern that looks like a combination of geometric shapes and possibly some sort of artwork or branding. The longboard has a more simple design with a logo on the bottom, which is common for surfboards to indicate the brand or model.\n\nBoth surfboards are placed on a grassy area, which is not a typical place to store surfboards, as they are usually stored in a garage or a rack when not in use. The presence of the grass suggests that the photo might have been taken in a casual or informal setting, possibly during a surfing session or a break from surfing.",
+        "llava_next_generated_len": 283
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "sports",
+        "image_id": "a66b0731cef5ba7b",
+        "image_src": "https://c4.staticflickr.com/4/3048/2603285498_e8e6c82214_o.jpg",
+        "image_content": [
+            "Horse",
+            "Person",
+            "Mammal",
+            "Tree"
+        ],
+        "question": "How many horses are there in the photo?",
+        "gt_answer": "There are three horses in the photo.",
+        "model_answer": "There are two horses in the photo.",
+        "llava_next_answer": "There are two horses in the photo.",
+        "llava_next_generated_len": 10
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "sports",
+        "image_id": "ac08533aa9ebadbb",
+        "image_src": "https://c4.staticflickr.com/5/4010/4459982881_b378f81b6f_o.jpg",
+        "image_content": [
+            "Ball (Object)",
+            "Furniture",
+            "Billiard table",
+            "Table"
+        ],
+        "question": "What is the color of the ball on the left?",
+        "gt_answer": "The color of the ball on the left is red or orange.",
+        "model_answer": "The ball on the left is orange.",
+        "llava_next_answer": "The ball on the left is orange.",
+        "llava_next_generated_len": 10
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "sports",
+        "image_id": "93817e876146e69b",
+        "image_src": "https://c4.staticflickr.com/6/5099/5483033051_fa3ecf0e0d_o.jpg",
+        "image_content": [
+            "Person",
+            "Mammal",
+            "Sports equipment",
+            "Footwear",
+            "Helmet",
+            "Clothing"
+        ],
+        "question": "Is this photo taken indoors or outdoors?",
+        "gt_answer": "The photo is taken indoors, since there is a group of hockey players playing in an ice stadium.",
+        "model_answer": "The photo appears to be taken indoors, as indicated by the artificial ice surface and the walls that are not typical of an outdoor rink.",
+        "llava_next_answer": "The photo appears to be taken indoors, as indicated by the artificial ice surface and the walls that are not typical of an outdoor rink.",
+        "llava_next_generated_len": 32
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "sports",
+        "image_id": "c548e556693c452c",
+        "image_src": "https://c5.staticflickr.com/3/2929/13926846360_2449b5b12f_o.jpg",
+        "image_content": [
+            "Human arm",
+            "Footwear",
+            "Football",
+            "Clothing",
+            "Man",
+            "Mammal",
+            "Human body",
+            "Sports equipment",
+            "Human hand"
+        ],
+        "question": "Describe the activity in this photo.",
+        "gt_answer": "In this photo, three players are playing soccer. The first player on the left wears a white and red uniform, and is controlling the ball. The other two players on the right side are from the other team. They wear blue and yellow uniforms. The player closer to the camera is competing with the first player to gain control of the ball, while the other player is at distance.",
+        "model_answer": "In the photo, there is a soccer match in progress. Two players are in the foreground, one wearing a white jersey with red accents and the other in a blue jersey with yellow accents. The player in white is in the process of kicking the ball, which is visible on the ground. The player in blue appears to be defending, with his arms outstretched, possibly attempting to block the kick or intercept the ball. Both players are wearing shorts, socks, and cleats appropriate for a soccer match. In the background, there is a stadium with rows of seats, suggesting that this is a professional or semi-professional match. The atmosphere seems competitive, and the players are focused on the game.",
+        "llava_next_answer": "In the photo, there is a soccer match in progress. Two players are in the foreground, one wearing a white jersey with red accents and the other in a blue jersey with yellow accents. The player in white is in the process of kicking the ball, which is visible on the ground. The player in blue appears to be defending, with his arms outstretched, possibly attempting to block the kick or intercept the ball. Both players are wearing shorts, socks, and cleats appropriate for a soccer match. In the background, there is a stadium with rows of seats, suggesting that this is a professional or semi-professional match. The atmosphere seems competitive, and the players are focused on the game.",
+        "llava_next_generated_len": 151
+    },
+    {
+        "question_type": "other",
+        "question_topic": "sports",
+        "image_id": "7bc342d079ac1474",
+        "image_src": "https://farm5.staticflickr.com/3802/13407081714_0375f7b3e0_o.jpg",
+        "image_content": [
+            "Person",
+            "Footwear",
+            "Tennis racket",
+            "Sports equipment",
+            "Human arm",
+            "Ball (Object)"
+        ],
+        "question": "Which tournament is this tennis competition?",
+        "gt_answer": "From the text on the ground, this is the Indian Wells tournament.",
+        "model_answer": "The image shows a tennis player on a court with the words \"Indian Wells\" written on the ground. This suggests that the tennis competition is the BNP Paribas Open, which is held annually at the Indian Wells Tennis Garden in Indian Wells, California. It is one of the prestigious tournaments in the Masters 1000 series on the ATP Tour.",
+        "llava_next_answer": "The image shows a tennis player on a court with the words \"Indian Wells\" written on the ground. This suggests that the tennis competition is the BNP Paribas Open, which is held annually at the Indian Wells Tennis Garden in Indian Wells, California. It is one of the prestigious tournaments in the Masters 1000 series on the ATP Tour.",
+        "llava_next_generated_len": 80
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "kitchen",
+        "image_id": "9133b173feb0a59a",
+        "image_src": "https://c3.staticflickr.com/4/3827/12255073776_5f17d88d21_o.jpg",
+        "image_content": [
+            "Home appliance",
+            "Cupboard",
+            "Cabinetry",
+            "Kitchen appliance",
+            "Countertop",
+            "Microwave oven",
+            "Furniture",
+            "Sink",
+            "Drawer",
+            "Refrigerator",
+            "House",
+            "Plumbing fixture"
+        ],
+        "question": "What color is the microwave?",
+        "gt_answer": "The microwave is mainly silver, with a black panel.",
+        "model_answer": "The microwave in the image is silver.",
+        "llava_next_answer": "The microwave in the image is silver.",
+        "llava_next_generated_len": 12
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "kitchen",
+        "image_id": "29e78aee706861b1",
+        "image_src": "https://farm2.staticflickr.com/1116/1411998044_37c3c4a234_o.jpg",
+        "image_content": [
+            "House",
+            "Cupboard",
+            "Kitchen & dining room table",
+            "Cabinetry",
+            "Home appliance",
+            "Table",
+            "Kitchen appliance",
+            "Chair",
+            "Window"
+        ],
+        "question": "How many people are eating in this kitchen?",
+        "gt_answer": "No one is eating in the kitchen. I can see a dining table and four chairs, but there are no people in the sitting there right now.",
+        "model_answer": "The image shows a dining table with four chairs around it. However, there are no people visible in the image. It appears to be a staged or empty kitchen, possibly for a real estate listing or a design showcase.",
+        "llava_next_answer": "The image shows a dining table with four chairs around it. However, there are no people visible in the image. It appears to be a staged or empty kitchen, possibly for a real estate listing or a design showcase.",
+        "llava_next_generated_len": 48
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "kitchen",
+        "image_id": "1b7fae3b7e77482a",
+        "image_src": "https://c3.staticflickr.com/4/3039/3018306107_51f8da54b3_o.jpg",
+        "image_content": [
+            "Kitchen utensil",
+            "Fork",
+            "Spoon",
+            "Tableware",
+            "Toy",
+            "Person"
+        ],
+        "question": "Compare the utensils in the picture.",
+        "gt_answer": "The picture shows a set of three utensils in different views with a white background: A knive with a blue handle, a spoon with a yellow handle, and a red fork with a red handle. They are all made of metal and plastic handle.",
+        "model_answer": "The image shows a set of four utensils: a fork, a knife, a spoon, and a pair of chopsticks. The fork and knife are made of metal, while the spoon and chopsticks are made of plastic. The plastic utensils are designed to look like Lego bricks, with the fork and knife having yellow handles and the spoon and chopsticks having red handles. The metal utensils are silver in color. The image also shows a hand holding the plastic fork and spoon, demonstrating their size and how they are designed to be used. The background is plain white, which highlights the colorful and playful design of the plastic utensils.",
+        "llava_next_answer": "The image shows a set of four utensils: a fork, a knife, a spoon, and a pair of chopsticks. The fork and knife are made of metal, while the spoon and chopsticks are made of plastic. The plastic utensils are designed to look like Lego bricks, with the fork and knife having yellow handles and the spoon and chopsticks having red handles. The metal utensils are silver in color. The image also shows a hand holding the plastic fork and spoon, demonstrating their size and how they are designed to be used. The background is plain white, which highlights the colorful and playful design of the plastic utensils.",
+        "llava_next_generated_len": 143
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "kitchen",
+        "image_id": "d81d745b84568e6a",
+        "image_src": "https://c3.staticflickr.com/7/6153/6266717889_714dc304bd_o.jpg",
+        "image_content": [
+            "Kitchen utensil",
+            "Fork",
+            "Tableware",
+            "Tool"
+        ],
+        "question": "How many forks can you see?",
+        "gt_answer": "There are two forks.",
+        "model_answer": "There are two forks visible in the image.",
+        "llava_next_answer": "There are two forks visible in the image.",
+        "llava_next_generated_len": 12
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "kitchen",
+        "image_id": "0fb3b09b91685b46",
+        "image_src": "https://farm7.staticflickr.com/4128/4967650364_6b23e0e7de_o.jpg",
+        "image_content": [
+            "Coffee cup",
+            "Spoon",
+            "Mug",
+            "Tableware",
+            "Kitchen utensil"
+        ],
+        "question": "What are the objects from right to left?",
+        "gt_answer": "The objects from right to left are a lid, a spoon, and a coffee cup.",
+        "model_answer": "The objects from right to left in the image are a small white saucer with the word \"coffee\" printed on it, a white spoon, and a white coffee mug with the word \"coffee\" printed on it.",
+        "llava_next_answer": "The objects from right to left in the image are a small white saucer with the word \"coffee\" printed on it, a white spoon, and a white coffee mug with the word \"coffee\" printed on it.",
+        "llava_next_generated_len": 51
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "kitchen",
+        "image_id": "df3e58f3075a5e9a",
+        "image_src": "https://c3.staticflickr.com/4/3213/3020281858_2d84b7bab7_o.jpg",
+        "image_content": [
+            "Sink",
+            "Gas stove",
+            "Shelf",
+            "Furniture",
+            "Drawer",
+            "Home appliance",
+            "Cabinetry",
+            "Table",
+            "Cupboard",
+            "Countertop",
+            "House",
+            "Chair"
+        ],
+        "question": "At what time is this photo taken?",
+        "gt_answer": "The photo is taken during the day.",
+        "model_answer": "The photo appears to be taken during the day, as indicated by the natural light coming through the windows. However, without any visible clocks or other time-telling devices, it's not possible to determine the exact time the photo was taken.",
+        "llava_next_answer": "The photo appears to be taken during the day, as indicated by the natural light coming through the windows. However, without any visible clocks or other time-telling devices, it's not possible to determine the exact time the photo was taken.",
+        "llava_next_generated_len": 53
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "kitchen",
+        "image_id": "cda31a3b42057d35",
+        "image_src": "https://farm6.staticflickr.com/4041/4234666745_63e51cc909_o.jpg",
+        "image_content": [
+            "Kitchen & dining room table",
+            "Window",
+            "Chair"
+        ],
+        "question": "Describe this photo in detail.",
+        "gt_answer": "This photo features a wooden dining table with four wooden or metal chairs around it. On the table there are two coasters and two glass cups. The table is set on a wooden floor. Behind the table are the wall and two windows.",
+        "model_answer": "In the heart of a cozy room, a wooden table takes center stage, its rich brown hue contrasting beautifully with the light-colored hardwood floor. The table, adorned with a white plate and two glasses of water, is surrounded by four chairs, each with a unique charm. Two of the chairs are black, their dark color adding a touch of elegance to the room, while the other two are a lighter brown, blending harmoniously with the table.\n\nThe table is positioned in front of a window, which offers a glimpse of the world outside. The window is dressed in white curtains, their soft folds adding a touch of softness to the room. The curtains are partially drawn, allowing a hint of the outside world to seep in.\n\nThe room is bathed in natural light, creating a warm and inviting atmosphere. The light dances on the wooden table and chairs, highlighting their textures and colors. The overall scene is one of tranquility and comfort, a perfect setting for a quiet meal or conversation.",
+        "llava_next_answer": "In the heart of a cozy room, a wooden table takes center stage, its rich brown hue contrasting beautifully with the light-colored hardwood floor. The table, adorned with a white plate and two glasses of water, is surrounded by four chairs, each with a unique charm. Two of the chairs are black, their dark color adding a touch of elegance to the room, while the other two are a lighter brown, blending harmoniously with the table.\n\nThe table is positioned in front of a window, which offers a glimpse of the world outside. The window is dressed in white curtains, their soft folds adding a touch of softness to the room. The curtains are partially drawn, allowing a hint of the outside world to seep in.\n\nThe room is bathed in natural light, creating a warm and inviting atmosphere. The light dances on the wooden table and chairs, highlighting their textures and colors. The overall scene is one of tranquility and comfort, a perfect setting for a quiet meal or conversation.",
+        "llava_next_generated_len": 223
+    },
+    {
+        "question_type": "other",
+        "question_topic": "kitchen",
+        "image_id": "4e5670ec1484e9c4",
+        "image_src": "https://farm5.staticflickr.com/6005/5997807974_708c7602a0_o.jpg",
+        "image_content": [
+            "Home appliance",
+            "Toaster",
+            "Oven",
+            "Furniture",
+            "Gas stove",
+            "Drawer",
+            "Cabinetry",
+            "Kitchen appliance"
+        ],
+        "question": "In the picture, which buttons should I use to control the stove above?",
+        "gt_answer": "There are 8 buttons in front of the stainless steel stove, two on the left and six on the right. Since there are also six stoves above, the buttons on the right should be associated with the stoves and used to control them. There is also a digital display to the left of the buttons that shows \"5:27\", which is possibly the current time.",
+        "model_answer": "The image shows a modern gas stove with a control panel on the front. The control panel typically has knobs or dials for each burner, which are used to adjust the heat settings. To control the stove above, you should look for the knobs or dials that correspond to the burner you want to use.\n\nIn this particular stove, there are six burners, so there should be six knobs or dials. Each knob or dial is likely to control the heat for one of the burners. To identify which knob or dial corresponds to the burner you want to use, you should look for the one that is closest to the burner you want to turn on or off.\n\nIf you're not sure which knob or dial corresponds to a specific burner, you can refer to the user manual for your stove, which should provide a diagram or instructions for operating the stove.",
+        "llava_next_answer": "The image shows a modern gas stove with a control panel on the front. The control panel typically has knobs or dials for each burner, which are used to adjust the heat settings. To control the stove above, you should look for the knobs or dials that correspond to the burner you want to use.\n\nIn this particular stove, there are six burners, so there should be six knobs or dials. Each knob or dial is likely to control the heat for one of the burners. To identify which knob or dial corresponds to the burner you want to use, you should look for the one that is closest to the burner you want to turn on or off.\n\nIf you're not sure which knob or dial corresponds to a specific burner, you can refer to the user manual for your stove, which should provide a diagram or instructions for operating the stove.",
+        "llava_next_generated_len": 191
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "accessory",
+        "image_id": "64f51a50c1aff6f7",
+        "image_src": "https://farm8.staticflickr.com/8170/7962741614_51a3a8b874_o.jpg",
+        "image_content": [
+            "Umbrella",
+            "Fashion accessory"
+        ],
+        "question": "What color is the umbrella?",
+        "gt_answer": "The umbrella is colorful, containing purple, yellow, teal, and orange.",
+        "model_answer": "The umbrella in the image is multi-colored, with each point of the umbrella in a different color: yellow, green, blue, and purple.",
+        "llava_next_answer": "The umbrella in the image is multi-colored, with each point of the umbrella in a different color: yellow, green, blue, and purple.",
+        "llava_next_generated_len": 36
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "accessory",
+        "image_id": "159220398554e6b0",
+        "image_src": "https://farm1.staticflickr.com/2572/4093922675_0e2f451fe0_o.jpg",
+        "image_content": [
+            "Glove",
+            "Clothing",
+            "Fashion accessory"
+        ],
+        "question": "Describe the hands wearing the gloves.",
+        "gt_answer": "Only a pair of black gloves can be observed in the image. There are no hands shown in the image.",
+        "model_answer": "The image shows a pair of black gloves against a white background. The gloves appear to be made of a soft material, possibly fleece or a similar synthetic fabric, and they have a snug fit, suggesting they are designed to provide warmth and protection. The gloves have a simple design with no visible patterns or logos, and they are positioned with the palms facing upwards. The fingers are slightly curled, and the gloves are not stretched out, which gives a sense of their shape and size. The cuffs of the gloves are elasticated, which is typical for gloves to ensure a secure fit around the wrists. The image is a clear, straightforward product shot, likely intended for retail or promotional purposes.",
+        "llava_next_answer": "The image shows a pair of black gloves against a white background. The gloves appear to be made of a soft material, possibly fleece or a similar synthetic fabric, and they have a snug fit, suggesting they are designed to provide warmth and protection. The gloves have a simple design with no visible patterns or logos, and they are positioned with the palms facing upwards. The fingers are slightly curled, and the gloves are not stretched out, which gives a sense of their shape and size. The cuffs of the gloves are elasticated, which is typical for gloves to ensure a secure fit around the wrists. The image is a clear, straightforward product shot, likely intended for retail or promotional purposes.",
+        "llava_next_generated_len": 150
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "accessory",
+        "image_id": "886b0014dcc373a3",
+        "image_src": "https://farm4.staticflickr.com/7444/12392564684_ffd19b5b55_o.jpg",
+        "image_content": [
+            "Hiking equipment",
+            "Clothing",
+            "Backpack"
+        ],
+        "question": "Compare the two different views of the backpack.",
+        "gt_answer": "The image shows two different views of the same black backpack. On the left side, it shows the inside of the bag, containing a camera, two lenses an other accessories. On the right side, it shows the outside of the bag, and there is a \"Lowepro\" logo on it.",
+        "model_answer": "The image shows two views of a backpack, one with the backpack open and the other with it closed.\n\nIn the open view, you can see the interior of the backpack, which is divided into several compartments. There's a main compartment with a padded interior, which appears to be designed to hold a camera or other delicate equipment. Inside this compartment, there are compartments for lenses, a camera body, and other accessories. There's also a smaller compartment with a mesh pocket, which could be used for storing smaller items like batteries, memory cards, or a lens cap.\n\nThe closed view shows the exterior of the backpack. It has a black exterior with a visible logo on the top right corner. The backpack has a handle on the top for carrying it by hand and a strap on the back for wearing it. The straps are adjustable, suggesting that the backpack can be worn on the back or carried on the shoulder. The design of the backpack suggests it's intended for carrying photography equipment, as indicated by the compartments and padding inside.",
+        "llava_next_answer": "The image shows two views of a backpack, one with the backpack open and the other with it closed.\n\nIn the open view, you can see the interior of the backpack, which is divided into several compartments. There's a main compartment with a padded interior, which appears to be designed to hold a camera or other delicate equipment. Inside this compartment, there are compartments for lenses, a camera body, and other accessories. There's also a smaller compartment with a mesh pocket, which could be used for storing smaller items like batteries, memory cards, or a lens cap.\n\nThe closed view shows the exterior of the backpack. It has a black exterior with a visible logo on the top right corner. The backpack has a handle on the top for carrying it by hand and a strap on the back for wearing it. The straps are adjustable, suggesting that the backpack can be worn on the back or carried on the shoulder. The design of the backpack suggests it's intended for carrying photography equipment, as indicated by the compartments and padding inside.",
+        "llava_next_generated_len": 230
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "accessory",
+        "image_id": "df4d61f1d6a84c36",
+        "image_src": "https://farm7.staticflickr.com/6081/6150182374_f0923ac4b0_o.jpg",
+        "image_content": [
+            "Clothing",
+            "Hat"
+        ],
+        "question": "How many black hats are there in the image?",
+        "gt_answer": "There are five black hats in the image.",
+        "model_answer": "There are five black hats in the image.",
+        "llava_next_answer": "There are five black hats in the image.",
+        "llava_next_generated_len": 12
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "accessory",
+        "image_id": "d0f1f4d19520388a",
+        "image_src": "https://c3.staticflickr.com/6/5554/14424649263_69118d3a3b_o.jpg",
+        "image_content": [
+            "Watch"
+        ],
+        "question": "Describe how the two watches are placed.",
+        "gt_answer": "There are two watches side by side in the photo. The black one is placed on top of and to the left of the red one.",
+        "model_answer": "The image shows a smartwatch with a screen displaying a map or a route, placed on top of a red watch strap. The smartwatch is positioned at an angle, with the screen facing upwards and slightly to the left, allowing the map to be visible. The red watch strap is laid out flat, and the smartwatch is resting on top of it, with the strap's buckle visible on the right side of the image. The overall arrangement suggests that the smartwatch is being showcased or compared with the watch strap, possibly to demonstrate the compatibility or design of the strap with the smartwatch.",
+        "llava_next_answer": "The image shows a smartwatch with a screen displaying a map or a route, placed on top of a red watch strap. The smartwatch is positioned at an angle, with the screen facing upwards and slightly to the left, allowing the map to be visible. The red watch strap is laid out flat, and the smartwatch is resting on top of it, with the strap's buckle visible on the right side of the image. The overall arrangement suggests that the smartwatch is being showcased or compared with the watch strap, possibly to demonstrate the compatibility or design of the strap with the smartwatch.",
+        "llava_next_generated_len": 132
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "accessory",
+        "image_id": "e376560f2ca3fbe6",
+        "image_src": "https://farm7.staticflickr.com/8308/7750080584_124d32aab3_o.jpg",
+        "image_content": [
+            "Footwear",
+            "Clothing"
+        ],
+        "question": "Is this photo taken indoors or outdoors?",
+        "gt_answer": "This photo shows a pair of green training shoes on a carpet, so this photo is taken indoors.",
+        "model_answer": "The photo appears to be taken indoors, as indicated by the carpeted flooring.",
+        "llava_next_answer": "The photo appears to be taken indoors, as indicated by the carpeted flooring.",
+        "llava_next_generated_len": 21
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "accessory",
+        "image_id": "e070667656d27f6d",
+        "image_src": "https://c6.staticflickr.com/7/6032/6333054847_854b033191_o.jpg",
+        "image_content": [
+            "Man",
+            "Person",
+            "Clothing",
+            "Human hand",
+            "Human arm",
+            "Fashion accessory",
+            "Woman",
+            "Human body"
+        ],
+        "question": "Describe the details in this photo.",
+        "gt_answer": "In the photo, a woman's hand is holding a man's hand. The woman's hand is wearing a diamond wedding ring, while the man's hand is wearing a simple wedding band. It seems that the woman is in a white dress and the man is in a black suit, but only a part can be seen in this photo. The image is black and white, except the wedding ring and band. This photo is likely taken in a wedding.",
+        "model_answer": "In this black and white photo, a couple's hands are gently clasped together, creating a sense of unity and love. The person on the left is wearing a white dress, which is adorned with a lace overlay, adding a touch of elegance to the scene. The person on the right is dressed in a black suit, providing a stark contrast to the white dress.\n\nThe couple is wearing matching wedding rings, a symbol of their commitment to each other. The person on the left is wearing a ring with a gold band, while the person on the right has a silver band. The rings are simple yet elegant, reflecting the couple's taste and style.\n\nThe photo captures a moment of intimacy and love between the couple, with their hands intertwined and their bodies close together. The black and white color scheme adds a timeless quality to the image, emphasizing the enduring nature of their love. The focus on the hands and the rings suggests that these are the most important elements in the photo, further emphasizing the significance of their commitment to each other.",
+        "llava_next_answer": "In this black and white photo, a couple's hands are gently clasped together, creating a sense of unity and love. The person on the left is wearing a white dress, which is adorned with a lace overlay, adding a touch of elegance to the scene. The person on the right is dressed in a black suit, providing a stark contrast to the white dress.\n\nThe couple is wearing matching wedding rings, a symbol of their commitment to each other. The person on the left is wearing a ring with a gold band, while the person on the right has a silver band. The rings are simple yet elegant, reflecting the couple's taste and style.\n\nThe photo captures a moment of intimacy and love between the couple, with their hands intertwined and their bodies close together. The black and white color scheme adds a timeless quality to the image, emphasizing the enduring nature of their love. The focus on the hands and the rings suggests that these are the most important elements in the photo, further emphasizing the significance of their commitment to each other.",
+        "llava_next_generated_len": 229
+    },
+    {
+        "question_type": "other",
+        "question_topic": "accessory",
+        "image_id": "75ed7924c47f984d",
+        "image_src": "https://c6.staticflickr.com/7/6231/6209347220_846cc7f471_o.jpg",
+        "image_content": [
+            "Cowboy hat",
+            "Man",
+            "Human face",
+            "Clothing",
+            "Human nose",
+            "Fedora",
+            "Human head",
+            "Glasses",
+            "Beard",
+            "Goggles",
+            "Human mouth",
+            "Human body",
+            "Mammal",
+            "Sunglasses",
+            "Human hair"
+        ],
+        "question": "What can you see in the reflection from the sunglasses?",
+        "gt_answer": "A man wearing a top hat and a suit is wearing this pair of sunglasses. From the reflection in his sunglasses, I can vaguely see some people, but not the man himself.",
+        "model_answer": "In the reflection from the sunglasses, you can see the person's face, including their nose, lips, and chin. The reflection also shows the person's beard and the top of their hat. The background is blurred, but it appears to be an indoor setting with other people present, suggesting a social gathering or event.",
+        "llava_next_answer": "In the reflection from the sunglasses, you can see the person's face, including their nose, lips, and chin. The reflection also shows the person's beard and the top of their hat. The background is blurred, but it appears to be an indoor setting with other people present, suggesting a social gathering or event.",
+        "llava_next_generated_len": 71
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "electronic",
+        "image_id": "d26d6ba07ad072f6",
+        "image_src": "https://farm7.staticflickr.com/4069/4654958099_df8364a87f_o.jpg",
+        "image_content": [
+            "Table"
+        ],
+        "question": "What is the color of the laptop?",
+        "gt_answer": "The color of the laptop is silver (or white). A black color sticker is on the laptop.",
+        "model_answer": "The laptop in the image is silver.",
+        "llava_next_answer": "The laptop in the image is silver.",
+        "llava_next_generated_len": 10
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "electronic",
+        "image_id": "45069d7de7100c0d",
+        "image_src": "https://c6.staticflickr.com/8/7012/6406526537_1c876dded4_o.jpg",
+        "image_content": [
+            "Computer mouse"
+        ],
+        "question": "What is playing on the monitor?",
+        "gt_answer": "There is no monitor in the image.",
+        "model_answer": "The image shows a computer mouse on a surface, but there is no visible monitor or screen in the frame. The mouse appears to be an Apple Magic Mouse, which is a wireless mouse designed for use with Apple computers. The surface it's on looks like a desk or table, and there's a reflection of the mouse on the surface, indicating that the photo was taken with a light source coming from above.",
+        "llava_next_answer": "The image shows a computer mouse on a surface, but there is no visible monitor or screen in the frame. The mouse appears to be an Apple Magic Mouse, which is a wireless mouse designed for use with Apple computers. The surface it's on looks like a desk or table, and there's a reflection of the mouse on the surface, indicating that the photo was taken with a light source coming from above.",
+        "llava_next_generated_len": 86
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "electronic",
+        "image_id": "10dda8b9e1534f15",
+        "image_src": "https://farm6.staticflickr.com/4013/4548634745_977535091a_o.jpg",
+        "image_content": [
+            "Ipod",
+            "Mobile phone",
+            "Human hand",
+            "Telephone"
+        ],
+        "question": "Which electronic device is larger?",
+        "gt_answer": "The iPod touch on the left is larger than the iPod nano on the right.",
+        "model_answer": "The device on the left is larger than the one on the right. It appears to be an iPhone, which is generally larger than the iPod shown on the right. The iPod is a portable media player designed for playing music and other audio files, while the iPhone is a smartphone that can also make calls, send messages, and perform a wide range of other functions.",
+        "llava_next_answer": "The device on the left is larger than the one on the right. It appears to be an iPhone, which is generally larger than the iPod shown on the right. The iPod is a portable media player designed for playing music and other audio files, while the iPhone is a smartphone that can also make calls, send messages, and perform a wide range of other functions.",
+        "llava_next_generated_len": 78
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "electronic",
+        "image_id": "b59436505aa102e8",
+        "image_src": "https://c1.staticflickr.com/2/1029/3352759027_94cb468a1f_o.jpg",
+        "image_content": [
+            "Person",
+            "Telephone",
+            "Human hand",
+            "Mobile phone"
+        ],
+        "question": "How many mobile phones are there in the image?",
+        "gt_answer": "There is one mobile phone in the image.",
+        "model_answer": "There are two mobile phones in the image.",
+        "llava_next_answer": "There are two mobile phones in the image.",
+        "llava_next_generated_len": 11
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "electronic",
+        "image_id": "0f817e05eecad078",
+        "image_src": "https://c1.staticflickr.com/1/28/47604332_c306b496b5_o.jpg",
+        "image_content": [
+            "Computer mouse"
+        ],
+        "question": "Is the mouse connected to a computer?",
+        "gt_answer": "No, the mouse is not connected to a computer.",
+        "model_answer": "The image shows a computer mouse with a USB cable connected to it, but there is no visible computer or device to which it is connected. The mouse is resting on a surface, and the cable is coiled up, suggesting it is not currently in use.",
+        "llava_next_answer": "The image shows a computer mouse with a USB cable connected to it, but there is no visible computer or device to which it is connected. The mouse is resting on a surface, and the cable is coiled up, suggesting it is not currently in use.",
+        "llava_next_generated_len": 54
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "electronic",
+        "image_id": "70a3d245181d6d88",
+        "image_src": "https://c1.staticflickr.com/6/5174/5393711070_4509c31205_o.jpg",
+        "image_content": [
+            "Mule"
+        ],
+        "question": "Where was the photo taken?",
+        "gt_answer": "The photo was taken outside with plants and mountains as surroundings.",
+        "model_answer": "The photo appears to be a creative or conceptual image rather than a real-life scene. It features a donkey with a television set strapped to its back, which is an unusual and surreal sight. The setting looks like a natural outdoor environment, possibly a field or a rural area, with a clear sky and a mountainous landscape in the background. The text \"Greetings from Timbuktu\" suggests that the image is meant to be humorous or whimsical, as Timbuktu is a city in Mali, West Africa, and not a place where one would expect to find a donkey with a television set on its back. The image is likely staged for artistic or promotional purposes.",
+        "llava_next_answer": "The photo appears to be a creative or conceptual image rather than a real-life scene. It features a donkey with a television set strapped to its back, which is an unusual and surreal sight. The setting looks like a natural outdoor environment, possibly a field or a rural area, with a clear sky and a mountainous landscape in the background. The text \"Greetings from Timbuktu\" suggests that the image is meant to be humorous or whimsical, as Timbuktu is a city in Mali, West Africa, and not a place where one would expect to find a donkey with a television set on its back. The image is likely staged for artistic or promotional purposes.",
+        "llava_next_generated_len": 151
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "electronic",
+        "image_id": "01a4b22028ed8133",
+        "image_src": "https://farm4.staticflickr.com/7415/12673135324_0973fca7b2_o.jpg",
+        "image_content": [
+            "Television",
+            "Person"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "In this image, I see a book, a pen, and a television on a table. The TV screen shows a man wearing a tie and a suit speaking in a park.",
+        "model_answer": "The image captures a moment of tranquility in a room, where a man is engrossed in watching a television program. The television, which is the centerpiece of the image, is displaying a program with a man in a suit and tie, suggesting a formal or professional setting. The man on the screen is wearing glasses and has a mustache, adding a touch of character to the scene.\n\nThe television is placed on a wooden stand, which also holds a notebook and a pen, perhaps indicating that the viewer is taking notes or jotting down important points from the program. The stand is positioned against a white wall, providing a clean and minimalist backdrop that allows the television and its contents to stand out.\n\nThe image also contains some text that reads \"2001 5.05 m\", which could be related to the program being displayed on the television. However, without additional context, it's difficult to determine its exact meaning.\n\nOverall, the image paints a picture of a quiet moment of learning or observation, with the viewer deeply engaged in the content being displayed on the television screen.",
+        "llava_next_answer": "The image captures a moment of tranquility in a room, where a man is engrossed in watching a television program. The television, which is the centerpiece of the image, is displaying a program with a man in a suit and tie, suggesting a formal or professional setting. The man on the screen is wearing glasses and has a mustache, adding a touch of character to the scene.\n\nThe television is placed on a wooden stand, which also holds a notebook and a pen, perhaps indicating that the viewer is taking notes or jotting down important points from the program. The stand is positioned against a white wall, providing a clean and minimalist backdrop that allows the television and its contents to stand out.\n\nThe image also contains some text that reads \"2001 5.05 m\", which could be related to the program being displayed on the television. However, without additional context, it's difficult to determine its exact meaning.\n\nOverall, the image paints a picture of a quiet moment of learning or observation, with the viewer deeply engaged in the content being displayed on the television screen.",
+        "llava_next_generated_len": 240
+    },
+    {
+        "question_type": "other",
+        "question_topic": "electronic",
+        "image_id": "ea32242f60eefff4",
+        "image_src": "https://farm5.staticflickr.com/1430/1172644431_3dabdd34b5_o.jpg",
+        "image_content": [
+            "Laptop",
+            "Computer keyboard"
+        ],
+        "question": "Is this a Macbook or Windows laptop?",
+        "gt_answer": "This is a Macbook, as indicated by the presence of the Apple logo on the keyboard.",
+        "model_answer": "The image shows a close-up of a laptop keyboard, but it's not possible to definitively determine whether it's a MacBook or a Windows laptop just from the image. Both MacBook and Windows laptops can have similar key layouts, and the image does not provide enough context to distinguish between the two. The keys are labeled with standard QWERTY lettering, which is common to both Mac and Windows keyboards.",
+        "llava_next_answer": "The image shows a close-up of a laptop keyboard, but it's not possible to definitively determine whether it's a MacBook or a Windows laptop just from the image. Both MacBook and Windows laptops can have similar key layouts, and the image does not provide enough context to distinguish between the two. The keys are labeled with standard QWERTY lettering, which is common to both Mac and Windows keyboards.",
+        "llava_next_generated_len": 91
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "furniture",
+        "image_id": "efab1896bde1ae53",
+        "image_src": "https://farm4.staticflickr.com/8297/7818684444_d3de1dd27a_o.jpg",
+        "image_content": [
+            "Sofa bed",
+            "Loveseat",
+            "Studio couch",
+            "Bed",
+            "Pillow"
+        ],
+        "question": "What are the colors of the pillows from left to right?",
+        "gt_answer": "The colors of the pillows from left to right are white (or grey), yellow, and white (or grey).",
+        "model_answer": "The pillows on the couch from left to right are green, yellow, and blue.",
+        "llava_next_answer": "The pillows on the couch from left to right are green, yellow, and blue.",
+        "llava_next_generated_len": 20
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "furniture",
+        "image_id": "cb1abb0fc94b341a",
+        "image_src": "https://c3.staticflickr.com/4/3169/2653797190_f42908d6e5_o.jpg",
+        "image_content": [
+            "Window",
+            "House",
+            "Sofa bed",
+            "Studio couch",
+            "Bed"
+        ],
+        "question": "What is the color of the chair in the image?",
+        "gt_answer": "There is no chair in the image.",
+        "model_answer": "The color of the chair in the image is a light beige or cream color.",
+        "llava_next_answer": "The color of the chair in the image is a light beige or cream color.",
+        "llava_next_generated_len": 19
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "furniture",
+        "image_id": "6c98114a44982486",
+        "image_src": "https://farm7.staticflickr.com/2026/2236797328_6c02e4d416_o.jpg",
+        "image_content": [
+            "Pillow",
+            "Bed",
+            "Furniture",
+            "House",
+            "Building"
+        ],
+        "question": "Which pillow is closer to the camera?",
+        "gt_answer": "The pillow on the right side of the bed is closer to the camera.",
+        "model_answer": "The pillow on the right is closer to the camera.",
+        "llava_next_answer": "The pillow on the right is closer to the camera.",
+        "llava_next_generated_len": 13
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "furniture",
+        "image_id": "61ef9eef568ab880",
+        "image_src": "https://farm1.staticflickr.com/7426/9421545611_004f98acc2_o.jpg",
+        "image_content": [
+            "Coffee table",
+            "Furniture",
+            "Sofa bed",
+            "Table",
+            "Chair",
+            "House",
+            "Sports equipment",
+            "Window",
+            "Billiard table"
+        ],
+        "question": "How many chairs are there in the image?",
+        "gt_answer": "There are two chairs in the image.",
+        "model_answer": "There are three chairs in the image.",
+        "llava_next_answer": "There are three chairs in the image.",
+        "llava_next_generated_len": 10
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "furniture",
+        "image_id": "8263f3934588cd54",
+        "image_src": "https://farm5.staticflickr.com/8035/8063845568_6b183760bc_o.jpg",
+        "image_content": [
+            "Pillow",
+            "Human arm",
+            "Human body"
+        ],
+        "question": "Which pillow is in front of the other pillows?",
+        "gt_answer": "There are three pillows. The gray pillow in the middle with the red \"paper\" handprint pattern is in front of the other pillows. The other two pillows are white and have a red \"scissors\" handprint pattern and a \"stone\" handprint pattern, respectively.",
+        "model_answer": "The pillow in the front is the one with the word \"STONE\" on it.",
+        "llava_next_answer": "The pillow in the front is the one with the word \"STONE\" on it.",
+        "llava_next_generated_len": 20
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "furniture",
+        "image_id": "78767a54758dcd79",
+        "image_src": "https://c2.staticflickr.com/4/3700/9536149248_661b279f89_o.jpg",
+        "image_content": [
+            "Table",
+            "Furniture",
+            "Chair",
+            "Couch",
+            "House",
+            "Kitchen & dining room table",
+            "Fireplace"
+        ],
+        "question": "What was the weather like when this photo was taken?",
+        "gt_answer": "When this photo was taken, it was already night and the sky was dark.",
+        "model_answer": "The photo shows an interior space that appears to be a living room or a combined living and dining area. There are no visible signs of the weather outside in the image, so it's not possible to determine the weather conditions from this photo alone. The interior is well-lit, suggesting it might be daytime, but there are no windows or other features that would provide information about the outside conditions.",
+        "llava_next_answer": "The photo shows an interior space that appears to be a living room or a combined living and dining area. There are no visible signs of the weather outside in the image, so it's not possible to determine the weather conditions from this photo alone. The interior is well-lit, suggesting it might be daytime, but there are no windows or other features that would provide information about the outside conditions.",
+        "llava_next_generated_len": 83
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "furniture",
+        "image_id": "fdd6663c53007255",
+        "image_src": "https://farm6.staticflickr.com/2446/3859505368_6e432fbae2_o.jpg",
+        "image_content": [
+            "Bed"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "In this image we can see two deck beds with pillows on them and carpet on the floor. The Beds are mainly in the blue color and the pillows are yellow with blue strips.",
+        "model_answer": "The image captures a serene and cozy bedroom scene. Dominating the space are two bunk beds, each adorned with a blue and yellow floral comforter that adds a touch of nature to the room. The beds are positioned against a pristine white wall, creating a stark contrast that enhances the overall aesthetic of the room.\n\nThe top bunk of the left bed is neatly made, with a single yellow pillow resting on it, ready for a good night's sleep. The bottom bunk of the same bed mirrors the top bunk, also made up with a blue and yellow floral comforter and a single yellow pillow.\n\nThe right bunk bed is slightly different. It has a blue and yellow floral comforter on the top bunk, but the bottom bunk is covered with a white comforter, providing a cooler sleeping option. A single yellow pillow is also present on the bottom bunk, maintaining the room's color scheme.\n\nThe floor beneath these beds is covered with a beige carpet, adding warmth and comfort to the room. The carpet's neutral color complements the white walls and the colorful beds, creating a harmonious and inviting atmosphere.\n\nOverall, the room exudes a sense of tranquility and order, with each object in its place and every detail thoughtfully arranged. It's a perfect example of a well-organized and comfortable bedroom space.",
+        "llava_next_answer": "The image captures a serene and cozy bedroom scene. Dominating the space are two bunk beds, each adorned with a blue and yellow floral comforter that adds a touch of nature to the room. The beds are positioned against a pristine white wall, creating a stark contrast that enhances the overall aesthetic of the room.\n\nThe top bunk of the left bed is neatly made, with a single yellow pillow resting on it, ready for a good night's sleep. The bottom bunk of the same bed mirrors the top bunk, also made up with a blue and yellow floral comforter and a single yellow pillow.\n\nThe right bunk bed is slightly different. It has a blue and yellow floral comforter on the top bunk, but the bottom bunk is covered with a white comforter, providing a cooler sleeping option. A single yellow pillow is also present on the bottom bunk, maintaining the room's color scheme.\n\nThe floor beneath these beds is covered with a beige carpet, adding warmth and comfort to the room. The carpet's neutral color complements the white walls and the colorful beds, creating a harmonious and inviting atmosphere.\n\nOverall, the room exudes a sense of tranquility and order, with each object in its place and every detail thoughtfully arranged. It's a perfect example of a well-organized and comfortable bedroom space.",
+        "llava_next_generated_len": 301
+    },
+    {
+        "question_type": "other",
+        "question_topic": "furniture",
+        "image_id": "b6b1f6e7715d4f02",
+        "image_src": "https://farm3.staticflickr.com/1040/990306359_60994704df_o.jpg",
+        "image_content": [
+            "Bathroom cabinet",
+            "Toilet paper",
+            "Bathroom accessory",
+            "Door",
+            "Toilet"
+        ],
+        "question": "Is the toilet paper used?",
+        "gt_answer": "The toilet paper has not been used because it was folded into a decorative shape.",
+        "model_answer": "The image shows a roll of toilet paper on a holder mounted on the wall. The roll appears to be partially used, as it is not fully wound up and there is visible toilet paper hanging out of the holder.",
+        "llava_next_answer": "The image shows a roll of toilet paper on a holder mounted on the wall. The roll appears to be partially used, as it is not fully wound up and there is visible toilet paper hanging out of the holder.",
+        "llava_next_generated_len": 45
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "indoor",
+        "image_id": "c0f90a125ff5ccf3",
+        "image_src": "https://farm4.staticflickr.com/3048/2971924328_aeaf1258e0_o.jpg",
+        "image_content": [
+            "Book"
+        ],
+        "question": "What color are these books?",
+        "gt_answer": "These books are red and white.",
+        "model_answer": "The books in the image are predominantly red and yellow. The spine of the book on the left is red with a yellow border, while the spine of the book on the right is yellow with a red border. The books in the middle have a combination of red and yellow covers with white text.",
+        "llava_next_answer": "The books in the image are predominantly red and yellow. The spine of the book on the left is red with a yellow border, while the spine of the book on the right is yellow with a red border. The books in the middle have a combination of red and yellow covers with white text.",
+        "llava_next_generated_len": 62
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "indoor",
+        "image_id": "9b133468e850a8f8",
+        "image_src": "https://c1.staticflickr.com/3/2631/4208064606_58b6907c83_o.jpg",
+        "image_content": [
+            "Tableware",
+            "Bowl",
+            "Vase",
+            "Flowerpot"
+        ],
+        "question": "What is in the vase?",
+        "gt_answer": "Nothing is in the vase.",
+        "model_answer": "The vase in the image appears to be empty. It has a dark blue or black exterior with a textured pattern and a lighter blue or gray interior. The vase is sitting on a white surface, and there is a shadow cast on the surface behind it, indicating that it is placed on a light source.",
+        "llava_next_answer": "The vase in the image appears to be empty. It has a dark blue or black exterior with a textured pattern and a lighter blue or gray interior. The vase is sitting on a white surface, and there is a shadow cast on the surface behind it, indicating that it is placed on a light source.",
+        "llava_next_generated_len": 66
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "indoor",
+        "image_id": "8535beba7fa530b1",
+        "image_src": "https://farm2.staticflickr.com/3779/9040237050_b0af7bbf73_o.jpg",
+        "image_content": [
+            "Vase"
+        ],
+        "question": "Which vase looks larger?",
+        "gt_answer": "The vase on the right appears larger. Both vases are white with blue and red flowers delicately painted on them.",
+        "model_answer": "The vase on the left appears to be slightly taller than the one on the right.",
+        "llava_next_answer": "The vase on the left appears to be slightly taller than the one on the right.",
+        "llava_next_generated_len": 21
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "indoor",
+        "image_id": "9d56e36ffb80ecde",
+        "image_src": "https://c7.staticflickr.com/3/2629/4219489460_4447e9da03_o.jpg",
+        "image_content": [
+            "Tree",
+            "Teddy bear",
+            "Plant",
+            "Mammal",
+            "Christmas tree"
+        ],
+        "question": "How many teddy bears are on the stairs?",
+        "gt_answer": "There are six teddy bears on the stairs.",
+        "model_answer": "There are nine teddy bears on the stairs.",
+        "llava_next_answer": "There are nine teddy bears on the stairs.",
+        "llava_next_generated_len": 13
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "indoor",
+        "image_id": "2664ce031523e2f9",
+        "image_src": "https://c2.staticflickr.com/4/3810/9899405365_e2df3063b2_o.jpg",
+        "image_content": [
+            "Flower",
+            "Houseplant",
+            "Flowerpot",
+            "Table",
+            "Building"
+        ],
+        "question": "Which color flowers are on top, and which color flowers are on the bottom?",
+        "gt_answer": "The blue flowers are on top, and the white flowers are on the bottom.",
+        "model_answer": "The flowers on top are blue, and the flowers on the bottom are white.",
+        "llava_next_answer": "The flowers on top are blue, and the flowers on the bottom are white.",
+        "llava_next_generated_len": 18
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "indoor",
+        "image_id": "58b8894b0151952e",
+        "image_src": "https://c7.staticflickr.com/8/7234/7014520149_78feda0bef_o.jpg",
+        "image_content": [
+            "Person",
+            "Chair",
+            "Window",
+            "Clothing",
+            "Table",
+            "Building",
+            "House",
+            "Furniture"
+        ],
+        "question": "What was the weather like when this photo was taken?",
+        "gt_answer": "When this photo was taken, it was already night and the sky was dark.",
+        "model_answer": "The photo shows a room with a festive decoration that resembles a snowflake garland. However, the weather outside the room is not visible in the image. The decoration suggests that the photo might have been taken during a winter season or during a celebration that involves snowflakes, such as a winter party or a Christmas celebration. The room itself appears to be well-lit and cozy, which could indicate that the weather outside is cold, but the exact conditions are not visible in the photo.",
+        "llava_next_answer": "The photo shows a room with a festive decoration that resembles a snowflake garland. However, the weather outside the room is not visible in the image. The decoration suggests that the photo might have been taken during a winter season or during a celebration that involves snowflakes, such as a winter party or a Christmas celebration. The room itself appears to be well-lit and cozy, which could indicate that the weather outside is cold, but the exact conditions are not visible in the photo.",
+        "llava_next_generated_len": 107
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "indoor",
+        "image_id": "5040c1ddd04d0415",
+        "image_src": "https://farm6.staticflickr.com/225/489474293_a1e7bea6bc_o.jpg",
+        "image_content": [
+            "Human arm",
+            "Human body",
+            "Infant bed",
+            "Human leg",
+            "Person",
+            "Human nose",
+            "Clothing",
+            "Furniture",
+            "Human ear",
+            "Human eye",
+            "Human face",
+            "Human mouth",
+            "Human head",
+            "Boy",
+            "Human hair",
+            "Animal",
+            "Mammal",
+            "Teddy bear"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "The image features a baby lying in a crib, which is placed in a room with a white background. The baby is wearing a diaper and is sleeping soundly. There are three stuffed animals hanging above the crib, providing a cozy and comforting atmosphere for the baby.",
+        "model_answer": "In the tranquil setting of a nursery, a baby, swaddled in a white onesie, is peacefully sleeping on a white crib. The crib, adorned with a white blanket, is the centerpiece of the image. Suspended above the baby's head are two stuffed animals, a brown teddy bear and a white bunny, adding a touch of whimsy to the scene. The teddy bear and bunny are hanging from the crib's canopy, their soft forms casting gentle shadows on the sleeping baby below. The image captures a moment of serenity and innocence, as the baby sleeps undisturbed under the watchful gaze of its stuffed companions.",
+        "llava_next_answer": "In the tranquil setting of a nursery, a baby, swaddled in a white onesie, is peacefully sleeping on a white crib. The crib, adorned with a white blanket, is the centerpiece of the image. Suspended above the baby's head are two stuffed animals, a brown teddy bear and a white bunny, adding a touch of whimsy to the scene. The teddy bear and bunny are hanging from the crib's canopy, their soft forms casting gentle shadows on the sleeping baby below. The image captures a moment of serenity and innocence, as the baby sleeps undisturbed under the watchful gaze of its stuffed companions.",
+        "llava_next_generated_len": 158
+    },
+    {
+        "question_type": "other",
+        "question_topic": "indoor",
+        "image_id": "36a55efe7e823b7f",
+        "image_src": "https://c8.staticflickr.com/8/7295/9019477149_f7d04cdb65_o.jpg",
+        "image_content": [
+            "Book"
+        ],
+        "question": "What is the name of the book?",
+        "gt_answer": "The name of the book is \"Proverbial Philosophy.\"",
+        "model_answer": "The book in the image is titled \"Reverberial Philosophy.\" It appears to be an old or vintage book, judging by the style of the cover and the text. The cover features decorative elements such as floral patterns and a central emblem, which is common in the design of books from certain historical periods. The text \"Reverberial Philosophy\" suggests that the book may contain philosophical or spiritual teachings that emphasize the concept of reverberation or resonance in a philosophical or metaphysical sense.",
+        "llava_next_answer": "The book in the image is titled \"Reverberial Philosophy.\" It appears to be an old or vintage book, judging by the style of the cover and the text. The cover features decorative elements such as floral patterns and a central emblem, which is common in the design of books from certain historical periods. The text \"Reverberial Philosophy\" suggests that the book may contain philosophical or spiritual teachings that emphasize the concept of reverberation or resonance in a philosophical or metaphysical sense.",
+        "llava_next_generated_len": 114
+    },
+    {
+        "question_type": "attribute",
+        "question_topic": "appliance",
+        "image_id": "0b566984f99efd97",
+        "image_src": "https://farm8.staticflickr.com/2730/4272595396_785d273725_o.jpg",
+        "image_content": [
+            "Fruit"
+        ],
+        "question": "What is the color of the pot?",
+        "gt_answer": "The color of the pot is silver, with red cherries inside.",
+        "model_answer": "The color of the pot in the image is red.",
+        "llava_next_answer": "The color of the pot in the image is red.",
+        "llava_next_generated_len": 13
+    },
+    {
+        "question_type": "adversarial",
+        "question_topic": "appliance",
+        "image_id": "0af4ba8fd2a7e628",
+        "image_src": "https://c1.staticflickr.com/2/1425/689823158_b0bff45e0f_o.jpg",
+        "image_content": [
+            "Bathroom accessory",
+            "Personal care",
+            "Sink",
+            "Tap"
+        ],
+        "question": "What is being washed in the sink?",
+        "gt_answer": "Nothing is being washed in the sink.",
+        "model_answer": "The image shows a bathroom sink with a faucet and a soap dispenser. There is a blue towel hanging on the side of the sink, and a bottle of Listerine mouthwash is placed on the sink. The sink appears to be clean and empty, with no visible items being washed in it. The towel is likely used for drying hands or face after washing.",
+        "llava_next_answer": "The image shows a bathroom sink with a faucet and a soap dispenser. There is a blue towel hanging on the side of the sink, and a bottle of Listerine mouthwash is placed on the sink. The sink appears to be clean and empty, with no visible items being washed in it. The towel is likely used for drying hands or face after washing.",
+        "llava_next_generated_len": 81
+    },
+    {
+        "question_type": "comparison",
+        "question_topic": "appliance",
+        "image_id": "daded832e3ae26b5",
+        "image_src": "https://farm6.staticflickr.com/8094/8431126135_cd1cf303e7_o.jpg",
+        "image_content": [
+            "Kitchen appliance",
+            "Washing machine",
+            "Refrigerator"
+        ],
+        "question": "Which washing machine is taller?",
+        "gt_answer": "The right washing machine with the top load design is taller. Both are white in color.",
+        "model_answer": "The washing machine on the right is taller than the one on the left.",
+        "llava_next_answer": "The washing machine on the right is taller than the one on the left.",
+        "llava_next_generated_len": 18
+    },
+    {
+        "question_type": "counting",
+        "question_topic": "appliance",
+        "image_id": "2eb806ea6284ca7a",
+        "image_src": "https://c3.staticflickr.com/8/7145/6599551311_4afa756cf7_o.jpg",
+        "image_content": [
+            "Turkey",
+            "Bird",
+            "Animal",
+            "Baked goods"
+        ],
+        "question": "How many chickens are cooked?",
+        "gt_answer": "There is one cooked chicken in the image.",
+        "model_answer": "There is only one chicken visible in the image. It appears to be a whole roasted turkey, not a chicken.",
+        "llava_next_answer": "There is only one chicken visible in the image. It appears to be a whole roasted turkey, not a chicken.",
+        "llava_next_generated_len": 27
+    },
+    {
+        "question_type": "relation",
+        "question_topic": "appliance",
+        "image_id": "1b6620d950202924",
+        "image_src": "https://farm5.staticflickr.com/28/58465322_592ff01d31_o.jpg",
+        "image_content": [
+            "Toilet paper",
+            "Bathroom accessory"
+        ],
+        "question": "What is placed on the tissue paper roll?",
+        "gt_answer": "A screwdriver is placed on the tissue paper roll.",
+        "model_answer": "The image shows a toilet paper roll with a small object on top of it. The object appears to be a yellow bottle with a pointed end, which could be a bottle of cleaning solution or a small container of some sort. It's not entirely clear what the object is from this angle and distance, but it's placed on the toilet paper holder, which is a common place to store small items for easy access.",
+        "llava_next_answer": "The image shows a toilet paper roll with a small object on top of it. The object appears to be a yellow bottle with a pointed end, which could be a bottle of cleaning solution or a small container of some sort. It's not entirely clear what the object is from this angle and distance, but it's placed on the toilet paper holder, which is a common place to store small items for easy access.",
+        "llava_next_generated_len": 87
+    },
+    {
+        "question_type": "environment",
+        "question_topic": "appliance",
+        "image_id": "3692c7b2c4697ed9",
+        "image_src": "https://c2.staticflickr.com/8/7518/16269340471_154a27d9df_o.jpg",
+        "image_content": [
+            "Countertop",
+            "Tap",
+            "Kitchen appliance",
+            "Window",
+            "Oven",
+            "House",
+            "Microwave oven",
+            "Cabinetry",
+            "Home appliance",
+            "Plumbing fixture",
+            "Sink"
+        ],
+        "question": "What time was the photo taken?",
+        "gt_answer": "The photo was taken at daytime.",
+        "model_answer": "The photo appears to have been taken during the day, as indicated by the natural light coming through the window. However, without any visible clocks or other time-telling devices in the image, it's not possible to determine the exact time the photo was taken.",
+        "llava_next_answer": "The photo appears to have been taken during the day, as indicated by the natural light coming through the window. However, without any visible clocks or other time-telling devices in the image, it's not possible to determine the exact time the photo was taken.",
+        "llava_next_generated_len": 57
+    },
+    {
+        "question_type": "holistic",
+        "question_topic": "appliance",
+        "image_id": "54568036521c53bd",
+        "image_src": "https://c6.staticflickr.com/4/3247/3045172470_2e407f3602_o.jpg",
+        "image_content": [
+            "Food"
+        ],
+        "question": "Describe the image in detail.",
+        "gt_answer": "In this image, I can see food items (likely Baozi or buns) on papers and a tong kept on a metal stand in an oven and I can see steam on the glass. There are nine of them, arranged into a 3 x 3 grid.",
+        "model_answer": "In the heart of a bustling kitchen, a metal tray cradles eight pristine white dumplings, their surfaces gleaming under the kitchen lights. The tray, resting on a wooden counter, is the centerpiece of this culinary tableau. Each dumpling is meticulously crafted, their doughy bodies encasing a filling that remains a mystery to the viewer.\n\nTo the right of the tray, a pair of tongs lies in wait, ready to pick up the dumplings once they've been cooked to perfection. The tongs, with their curved handles and pointed tips, are a testament to the precision and care that goes into preparing these delicate morsels.\n\nThe background is a blur of activity, suggesting the hustle and bustle of a busy kitchen. Despite the chaos, the dumplings remain the star of the show, their white color standing out against the muted tones of the kitchen.\n\nThis image captures a moment in time in a kitchen, where food is not just a meal, but an art form. It's a snapshot of the process that goes into creating these dumplings, from their preparation to their presentation.",
+        "llava_next_answer": "In the heart of a bustling kitchen, a metal tray cradles eight pristine white dumplings, their surfaces gleaming under the kitchen lights. The tray, resting on a wooden counter, is the centerpiece of this culinary tableau. Each dumpling is meticulously crafted, their doughy bodies encasing a filling that remains a mystery to the viewer.\n\nTo the right of the tray, a pair of tongs lies in wait, ready to pick up the dumplings once they've been cooked to perfection. The tongs, with their curved handles and pointed tips, are a testament to the precision and care that goes into preparing these delicate morsels.\n\nThe background is a blur of activity, suggesting the hustle and bustle of a busy kitchen. Despite the chaos, the dumplings remain the star of the show, their white color standing out against the muted tones of the kitchen.\n\nThis image captures a moment in time in a kitchen, where food is not just a meal, but an art form. It's a snapshot of the process that goes into creating these dumplings, from their preparation to their presentation.",
+        "llava_next_generated_len": 258
+    },
+    {
+        "question_type": "other",
+        "question_topic": "appliance",
+        "image_id": "cabbf79c0a4e40e6",
+        "image_src": "https://farm7.staticflickr.com/1385/5164137805_a2499e3ca9_o.jpg",
+        "image_content": [
+            "Bathroom accessory",
+            "Washing machine",
+            "Drawer",
+            "Furniture",
+            "Bathroom cabinet",
+            "Cabinetry",
+            "Sink",
+            "Plumbing fixture"
+        ],
+        "question": "What is shown in the mirror?",
+        "gt_answer": "The mirrow shows the reflection of the washing machine.",
+        "model_answer": "The mirror reflects a washing machine and a dryer, which are located in a laundry room. The room also features a countertop with a sink and a cabinet underneath. The floor is tiled, and the walls are painted in a light color.",
+        "llava_next_answer": "The mirror reflects a washing machine and a dryer, which are located in a laundry room. The room also features a countertop with a sink and a cabinet underneath. The floor is tiled, and the walls are painted in a light color.",
+        "llava_next_generated_len": 52
+    }
+]

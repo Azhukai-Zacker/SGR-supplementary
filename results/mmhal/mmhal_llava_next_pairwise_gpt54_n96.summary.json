@@ -1,0 +1,83 @@
+{
+  "num_pairs": 96,
+  "identical_answer_pairs": 75,
+  "changed_answer_pairs": 21,
+  "baseline": {
+    "average_score": 2.25,
+    "hallucination_rate": 0.65625
+  },
+  "ours": {
+    "average_score": 2.2708333333333335,
+    "hallucination_rate": 0.6354166666666666
+  },
+  "paired_delta_ours_minus_baseline": {
+    "average_score_delta": 0.020833333333333332,
+    "hallucination_rate_delta": -0.020833333333333332,
+    "fix_hallucination_pairs": 2,
+    "new_hallucination_pairs": 0
+  },
+  "average_score_each_question_type": {
+    "adversarial": {
+      "baseline": 2.25,
+      "ours": 2.3333333333333335,
+      "delta": 0.08333333333333348,
+      "baseline_hallucination_rate": 0.75,
+      "ours_hallucination_rate": 0.6666666666666666
+    },
+    "attribute": {
+      "baseline": 3.0833333333333335,
+      "ours": 3.0833333333333335,
+      "delta": 0.0,
+      "baseline_hallucination_rate": 0.4166666666666667,
+      "ours_hallucination_rate": 0.4166666666666667
+    },
+    "comparison": {
+      "baseline": 2.5833333333333335,
+      "ours": 2.5,
+      "delta": -0.08333333333333348,
+      "baseline_hallucination_rate": 0.5,
+      "ours_hallucination_rate": 0.5
+    },
+    "counting": {
+      "baseline": 2.0,
+      "ours": 2.25,
+      "delta": 0.25,
+      "baseline_hallucination_rate": 0.6666666666666666,
+      "ours_hallucination_rate": 0.5833333333333334
+    },
+    "environment": {
+      "baseline": 2.9166666666666665,
+      "ours": 2.9166666666666665,
+      "delta": 0.0,
+      "baseline_hallucination_rate": 0.5,
+      "ours_hallucination_rate": 0.5
+    },
+    "holistic": {
+      "baseline": 1.25,
+      "ours": 1.1666666666666667,
+      "delta": -0.08333333333333326,
+      "baseline_hallucination_rate": 1.0,
+      "ours_hallucination_rate": 1.0
+    },
+    "other": {
+      "baseline": 1.8333333333333333,
+      "ours": 1.8333333333333333,
+      "delta": 0.0,
+      "baseline_hallucination_rate": 0.75,
+      "ours_hallucination_rate": 0.75
+    },
+    "relation": {
+      "baseline": 2.0833333333333335,
+      "ours": 2.0833333333333335,
+      "delta": 0.0,
+      "baseline_hallucination_rate": 0.6666666666666666,
+      "ours_hallucination_rate": 0.6666666666666666
+    }
+  },
+  "limit": 96,
+  "judge_model": "gpt-5.4",
+  "base_url": "<OPENAI_COMPATIBLE_BASE_URL>",
+  "baseline_response": "mmhal_llava_next_baseline_preds.json",
+  "ours_response": "mmhal_llava_next_threebranch_k10_soft_seed20260423_preds.json",
+  "output": "mmhal_llava_next_pairwise_gpt54_n96.review.jsonl"
+}

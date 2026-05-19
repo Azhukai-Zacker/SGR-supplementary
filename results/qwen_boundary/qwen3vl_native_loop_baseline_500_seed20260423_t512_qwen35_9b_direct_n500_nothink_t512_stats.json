@@ -1,0 +1,7 @@
+{
+    "missing_image_cnt": 0,
+    "error_cnt": 0,
+    "truncated_cnt": 0,
+    "success_cnt": 500,
+    "avg_generated_len_sum": 87884.0
+}

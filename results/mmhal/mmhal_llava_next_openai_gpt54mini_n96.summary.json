@@ -1,0 +1,45 @@
+{
+  "limit": 96,
+  "methods": {
+    "baseline": {
+      "num_records": 96,
+      "average_score": 2.8125,
+      "hallucination_rate": 0.5,
+      "average_score_each_question_type": {
+        "adversarial": 2.9166666666666665,
+        "attribute": 3.1666666666666665,
+        "comparison": 3.5,
+        "counting": 1.5,
+        "environment": 4.083333333333333,
+        "holistic": 2.0,
+        "other": 2.5,
+        "relation": 2.8333333333333335
+      }
+    },
+    "ours": {
+      "num_records": 96,
+      "average_score": 2.6979166666666665,
+      "hallucination_rate": 0.53125,
+      "average_score_each_question_type": {
+        "adversarial": 2.9166666666666665,
+        "attribute": 3.25,
+        "comparison": 2.9166666666666665,
+        "counting": 2.3333333333333335,
+        "environment": 4.083333333333333,
+        "holistic": 1.4166666666666667,
+        "other": 2.0833333333333335,
+        "relation": 2.5833333333333335
+      }
+    }
+  },
+  "paired_delta_ours_minus_baseline": {
+    "num_pairs": 96,
+    "average_score_delta": -0.11458333333333333,
+    "hallucination_rate_delta": 0.03125
+  },
+  "judge_model": "gpt-5.4-mini",
+  "base_url": "<OPENAI_COMPATIBLE_BASE_URL>",
+  "baseline_response": "mmhal_llava_next_baseline_preds.json",
+  "ours_response": "mmhal_llava_next_threebranch_k10_soft_seed20260423_preds.json",
+  "output": "mmhal_llava_next_openai_gpt54mini_n96.review.jsonl"
+}

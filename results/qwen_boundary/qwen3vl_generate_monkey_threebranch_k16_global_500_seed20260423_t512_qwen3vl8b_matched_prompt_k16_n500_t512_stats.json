@@ -1,0 +1,16 @@
+{
+    "missing_image_cnt": 0,
+    "error_cnt": 0,
+    "truncated_cnt": 53,
+    "success_cnt": 500,
+    "avg_generated_len_sum": 202926.0,
+    "planned_interventions": 8000,
+    "trigger_hits": 6403,
+    "stateless_aux_calls": 12806,
+    "stateless_aux_tokens": 2708584,
+    "guardrail_blocks": 10275,
+    "guardrail_accept_cnt": 1134,
+    "guardrail_fallback_cnt": 5269,
+    "total_interventions": 6403,
+    "effective_interventions": 1137
+}

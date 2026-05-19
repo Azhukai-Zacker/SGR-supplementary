@@ -1,0 +1,23 @@
+# Core runtime
+python-dotenv>=1.0.0
+numpy>=1.24
+pillow>=10.0
+tqdm>=4.66
+
+# Model inference
+torch>=2.2
+torchvision>=0.17
+transformers>=4.45
+accelerate>=0.30
+safetensors>=0.4
+sentencepiece>=0.2
+protobuf>=4.25
+
+# Evaluation and API judges
+openai>=1.40
+zhipuai>=2.1
+
+# Optional utilities
+pandas>=2.0
+scipy>=1.10
+
