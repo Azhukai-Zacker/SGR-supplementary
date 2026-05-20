@@ -45,12 +45,16 @@ Relevant scripts:
 - `code/internvl_threebranch_aggressive_coco.py`
 - `code/run_mmhal_internvl.py`
 - `code/run_llava_bench_internvl_threebranch.py`
+- `code/internvl_entropy_trigger_coco.py`
+- `code/run_internvl_entropy_online_k8.py`
+- `code/run_internvl_entropy_oracle_topk.py`
 - `code/alc_github_release/experiments/internvl_coco_native_loop.py`
 - `code/alc_github_release/experiments/internvl_mmhal_native_loop.py`
 
 ### Qwen-Family Diagnostics
 
-Qwen-family experiments are included as boundary diagnostics in the result summaries. The uploaded package includes summary artifacts under `results/qwen_boundary/`, but not a full Qwen reproduction script set. Reproducing those runs requires the corresponding Qwen-VL checkpoint and any model-specific processor utilities required by that checkpoint release.
+Qwen-family experiments are included as boundary diagnostics in the result summaries. The uploaded package includes summary artifacts under `results/qwen_boundary/` and the Qwen2.5-VL prior diagnostic script at `code/qwen25vl_prior_diagnostic.py`.
+Reproducing those runs requires the corresponding Qwen-VL checkpoint and any model-specific processor utilities required by that checkpoint release.
 
 ## Datasets
 
@@ -75,4 +79,3 @@ Do not commit API keys or private base URLs.
 ## Notes on Exact Reproduction
 
 The uploaded JSON files allow table-level verification without rerunning model generation. Re-running generation may still produce small differences if checkpoint revisions, CUDA kernels, or judge models differ. For this reason, the paper reports fixed prompts, fixed seeds for sparse schedules, and judge-specific summaries.
-

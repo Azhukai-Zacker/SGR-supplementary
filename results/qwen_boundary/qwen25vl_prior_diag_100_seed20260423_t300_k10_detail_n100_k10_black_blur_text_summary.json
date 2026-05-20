@@ -1,0 +1,56 @@
+{
+  "num_images": 100,
+  "num_events": 708,
+  "avg_generated_len": 188.49,
+  "planned_interventions": 1000,
+  "trigger_hits": 708,
+  "stateless_aux_calls": 2124,
+  "stateless_aux_tokens": 205386,
+  "priors": {
+    "black": {
+      "same_top1_rate": 0.7062146892655368,
+      "rerank_changed_rate": 0.23022598870056496,
+      "rerank_fallback_rate": 0.769774011299435,
+      "avg_guardrail_blocks": 2.4604519774011298,
+      "avg_visual_top1_prior_rank": 5.391242937853107,
+      "median_visual_top1_prior_rank": 1.0,
+      "avg_prior_top1_visual_rank": 19.994350282485875,
+      "median_prior_top1_visual_rank": 1.0,
+      "overlap": {
+        "top5": 0.7166666666666708,
+        "top10": 0.7048022598870055,
+        "top20": 0.715607344632769
+      }
+    },
+    "blur": {
+      "same_top1_rate": 0.6991525423728814,
+      "rerank_changed_rate": 0.23022598870056496,
+      "rerank_fallback_rate": 0.769774011299435,
+      "avg_guardrail_blocks": 2.4307909604519775,
+      "avg_visual_top1_prior_rank": 2.919491525423729,
+      "median_visual_top1_prior_rank": 1.0,
+      "avg_prior_top1_visual_rank": 4.4025423728813555,
+      "median_prior_top1_visual_rank": 1.0,
+      "overlap": {
+        "top5": 0.7186440677966139,
+        "top10": 0.7145480225988704,
+        "top20": 0.7189971751412442
+      }
+    },
+    "text": {
+      "same_top1_rate": 0.6850282485875706,
+      "rerank_changed_rate": 0.0903954802259887,
+      "rerank_fallback_rate": 0.0,
+      "avg_guardrail_blocks": 0.0,
+      "avg_visual_top1_prior_rank": 4.840395480225989,
+      "median_visual_top1_prior_rank": 1.0,
+      "avg_prior_top1_visual_rank": 15.759887005649718,
+      "median_prior_top1_visual_rank": 1.0,
+      "overlap": {
+        "top5": 0.7197740112994393,
+        "top10": 0.7148305084745756,
+        "top20": 0.7217514124293791
+      }
+    }
+  }
+}

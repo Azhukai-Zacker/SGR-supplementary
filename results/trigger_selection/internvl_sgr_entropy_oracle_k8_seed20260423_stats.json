@@ -1,0 +1,74 @@
+{
+    "method": "internvl_sgr_entropy_oracle",
+    "success_cnt": 500,
+    "missing_image_cnt": 0,
+    "error_cnt": 0,
+    "avg_generated_len_approx_sum": 70028.0,
+    "model_path": "<PATH_TO_INTERNVL3_5_8B>",
+    "jsonl_path": "<PATH_TO_COCO_500_JSONL>",
+    "image_folder": "<PATH_TO_COCO>/val2014",
+    "seed": 20260423,
+    "max_new_tokens": 220,
+    "max_num_tiles": 6,
+    "trigger_mode": "oracle",
+    "k": 8,
+    "effective_max_step": 220,
+    "top_k": 20,
+    "black_alpha": 0.25,
+    "text_alpha": 0.2,
+    "apc_threshold": 0.1,
+    "syntax_threshold": 0.05,
+    "syntax_margin": 0.01,
+    "guard_mode": "syntax",
+    "contrast_branch": "black",
+    "entropy_warmup": 5,
+    "entropy_lambda": 1.0,
+    "min_history": 5,
+    "planned_interventions": 4000,
+    "trigger_hits": 3891,
+    "total_interventions": 3891,
+    "effective_interventions": 1060,
+    "guardrail_blocks": 8312,
+    "guardrail_accept_cnt": 1060,
+    "guardrail_fallback_cnt": 2831,
+    "online_threshold_checks": 0,
+    "online_threshold_passes": 0,
+    "oracle_trace_tokens": 69419,
+    "trigger_steps": [
+        {
+            "step": 5,
+            "entropy": 1.7276122570037842
+        },
+        {
+            "step": 43,
+            "entropy": 0.011626655235886574
+        },
+        {
+            "step": 47,
+            "entropy": 0.019819775596261024
+        },
+        {
+            "step": 51,
+            "entropy": 1.6092442820081487e-05
+        },
+        {
+            "step": 64,
+            "entropy": 7.956263289088383e-05
+        },
+        {
+            "step": 66,
+            "entropy": 0.3299316167831421
+        },
+        {
+            "step": 67,
+            "entropy": 0.3304853141307831
+        },
+        {
+            "step": 94,
+            "entropy": 0.338064968585968
+        }
+    ],
+    "avg_generated_len_approx": 140.056,
+    "interventions_per_success": 7.782,
+    "effective_intervention_rate": 0.2724235415060396
+}

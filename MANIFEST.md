@@ -26,12 +26,17 @@
 - `code/eval_llava_bench_openai_compat.py`: OpenAI-compatible LLaVA-Bench judge script.
 - `code/eval_mmhal_pairwise_openai_compat.py`: OpenAI-compatible MMHal pairwise judge script.
 - `code/eval_mmhal_internvl_openai_compat30.py`: OpenAI-compatible MMHal judge script.
+- `code/internvl_entropy_trigger_coco.py`: shared InternVL entropy-trigger diagnostic implementation.
+- `code/run_internvl_entropy_online_k8.py`: online entropy-trigger diagnostic launcher.
+- `code/run_internvl_entropy_oracle_topk.py`: hindsight entropy top-8 diagnostic launcher.
+- `code/qwen25vl_prior_diagnostic.py`: Qwen2.5-VL prior-branch diagnostic script.
 
 ## Results
 
 - `results/chair/llava_next/`: LLaVA-NeXT COCO-CHAIR baseline, SGR, adapted VCD, and adapted PAI outputs.
 - `results/chair/internvl/`: InternVL COCO-CHAIR baseline, SGR, adapted VCD, and adapted PAI outputs.
 - `results/ablations/`: branch ablations, sparse-budget ablations, schedule ablations, and trace diagnostics.
+- `results/trigger_selection/`: InternVL object-candidate and entropy-trigger diagnostic outputs.
 - `results/mmhal/`: MMHal-Bench response JSONs and judge summaries.
 - `results/llava_bench/`: LLaVA-Bench judge outputs.
-- `results/qwen_boundary/`: Qwen-family boundary diagnostic summaries.
+- `results/qwen_boundary/`: Qwen-family boundary diagnostic summaries and Qwen2.5-VL prior diagnostic artifacts.
