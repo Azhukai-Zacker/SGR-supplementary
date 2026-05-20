@@ -1,9 +1,8 @@
 # Manifest
 
-## Paper
+## Figure
 
-- `paper/acl_latex.tex`
-- `paper/custom.bib`
+- `figures/method_overview.png`: SGR workflow overview.
 
 ## Code
 
