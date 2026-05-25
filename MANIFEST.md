@@ -2,7 +2,7 @@
 
 ## Figure
 
-- `figures/method_overview.png`: SGR workflow overview.
+- `figures/figure1.png`: SGR workflow overview used in the manuscript.
 
 ## Code
 

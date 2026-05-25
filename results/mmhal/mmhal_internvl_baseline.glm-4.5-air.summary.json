@@ -214,7 +214,7 @@
   "evaluation_file": "mmhal_internvl_baseline.glm-4.5-air.review.json",
   "summary_file": "mmhal_internvl_baseline.glm-4.5-air.summary.json",
   "judge_model": "glm-4.5-air",
-  "base_url": "https://open.bigmodel.cn/api/paas/v4",
+  "base_url": "<ZHIPUAI_COMPATIBLE_BASE_URL>",
   "answer_keys": [
     "model_answer",
     "internvl_answer"

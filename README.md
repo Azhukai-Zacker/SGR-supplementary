@@ -5,7 +5,7 @@ The full manuscript is submitted through the conference review system; this repo
 
 ## Contents
 
-- `figures/method_overview.png`: compact overview of the SGR workflow.
+- `figures/figure1.png`: compact overview of the SGR workflow used in the manuscript.
 - `code/`: generation and evaluation scripts used for COCO-CHAIR, MMHal-Bench, and LLaVA-Bench experiments.
 - `requirements.txt` and `ENVIRONMENT.md`: dependency and checkpoint setup notes.
 - `results/chair/`: COCO-CHAIR generation/evaluation JSON files for LLaVA-NeXT and InternVL.
